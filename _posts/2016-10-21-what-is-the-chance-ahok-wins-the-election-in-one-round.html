@@ -1,0 +1,46 @@
+---
+layout: post
+title: What is the chance Ahok wins the election in one round?
+date: 2016-10-21 09:10:01.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Probability and statistics
+tags:
+- bayesian probability
+- beta distribution
+- beta function
+- election
+meta:
+  _edit_last: '1'
+author:
+  login: mfkasim
+  email: firman.kasim@gmail.com
+  display_name: mfkasim
+  first_name: ''
+  last_name: ''
+---
+<p>I got a text message earlier today from my brother. He described some statistics from SMRC (a research organisation in Indonesia) about the people's choices for the next Jakarta governor election in 2017. There are 3 candidates for the governor position, one of them is the incumbent, Ahok. Out of 648 people they surveyed, 45.4% choose Ahok, 22.4% for Agus, 20.7% prefer Anies, and 11.5% choose not to disclose or have no choice (<a href="http://sp.mfkasim.com/wp-content/uploads/2016/10/rilis-dki-oktober2016_final_REV.pdf">link</a>, in Bahasa Indonesia). The question from <a href="https://www.facebook.com/m.firdaus.kasim/posts/10210200236098831">my brother </a>is, "(if the election is now, when the survey was conducted) <em>what is the chance of Ahok wins the election in one round</em>?" Given that to win the election in one round, Ahok needs to get 50% of the voters.<!--more--></p>
+<p>As I am now practicing my skill on Bayesian probability, I solved this problem using naive Bayesian. An assumption on this problem is that they use random sampling in gathering the samples. In fact, they used multi-stage random sampling, but getting the details of their method is hard, so I think random sampling is a reasonable assumption.</p>
+<p>The problem is posed as follows. There are $latex n $ samples sampled from $latex N $ populations. If $latex a $ out of $latex n $ choose Ahok, how much the proportion in the population that chooses Ahok? Assuming that $latex N \gg n$.</p>
+<p>Denote the proportion in the population is $latex \eta $, so the probability of the proportion of people choosing Ahok in the population has the value $latex \eta $ is</p>
+<p>[latex] P(\eta | a) = \frac{P(a | \eta) P(\eta)}{P(a)}. [/latex]</p>
+<p>$latex P(a | \eta) $ denotes the probability of finding $latex a $ samples out of $latex n $ that chooses Ahok if the proportion in the population is $latex \eta$. Due to the population size is much larger than the sample size, we can safely assume that the sampling is sampling with replacement. Thus, from binomial distribution,</p>
+<p>[latex] P(a | \eta) = \left(\begin{array}{c} n \\ a \end{array}\right) \eta^a (1-\eta)^{n-a}. [/latex]</p>
+<p>Now the prior distribution of the value of $latex P(\eta) $ is basically just a continuous uniform distribution from 0 to 1, so</p>
+<p>[latex] P(\eta) = \mathrm{d}\eta\ \mathrm{for}\ \eta\in[0,1]. [/latex]</p>
+<p>To find the prior distribution of $latex P(a) $, we can integrate $latex P(a|\eta) $ for the whole value of $latex \eta $ using the prior distribution of $latex P(\eta) $. Therefore,</p>
+<p>[latex] P(a) = \left(\begin{array}{c} n \\ a \end{array}\right) \int_0^1 P(a | \eta)\ \mathrm{d}\eta = \left(\begin{array}{c} n \\ a \end{array}\right) \int_0^1 \eta^a (1-\eta)^{n-a}\ \mathrm{d}\eta. [/latex]</p>
+<p>The integral results the <a href="https://en.wikipedia.org/wiki/Beta_function">Beta function</a>, which is $latex P(a) = \left(\begin{array}{c} n \\ a \end{array}\right) B(a+1, n-a+1) $.</p>
+<p>Obtaining all the prior distributions, we now can write the distribution of the proportion of the population that choose Ahok known that $latex a $ out of $latex n $ samples choose Ahok,</p>
+<p>[latex] P(\eta|a) = \frac{1}{B(a+1, n-a+1)} \eta^a (1-\eta)^{n-a}\ \mathrm{d}\eta. [/latex]</p>
+<p>This is known as <a href="https://en.wikipedia.org/wiki/Beta_distribution">Beta distribution</a>. For $latex n = {10, 20, 50}$ and $latex a = n/2$, the probability distribution function (PDF) of the Beta distribution is shown below.<img class="size-medium wp-image-22 aligncenter" src="{{ site.baseurl }}/assets/pdf-beta-300x225.png" alt="PDF Beta Distribution" width="300" height="225" />It is seen that as there are more sampling, the variance of $latex \eta $ becomes smaller. To get the margin of error with 95% confidence, we can search the range of the distribution to get the area of 0.95, as the area below each plot is integrated to 1. Below is the plot of margin of error with 95% confidence versus number of samples, with $latex a/n = 0.5$.</p>
+<p><img class="size-medium wp-image-23 aligncenter" src="{{ site.baseurl }}/assets/margin-of-error-300x225.png" alt="Margin of Error" width="300" height="225" />The margin of error with 95% confidence can be approximated by $latex \sim 100\%/\sqrt{n}$. This is in agreement with the number the research organisation provided. In their <a href="http://sp.mfkasim.com/wp-content/uploads/2016/10/rilis-dki-oktober2016_final_REV.pdf">presentation (page 3)</a>, they said the respondent is 648 and margin of error about 3.9%, which agrees with our approximated margin of error, $latex \sim 100\%/\sqrt{n} \approx 3.93\%$.</p>
+<p>Back to the problem. To calculate the probability of Ahok winning the election in one round, he needs $latex \eta &gt; 0.5 $. Thus, to calculate the probability, we can integrate the beta distribution from $latex \eta = 0.5 $ to 1. It can be achieved by calculating the <a href="https://en.wikipedia.org/wiki/Beta_function#Incomplete_beta_function">incomplete beta function</a>.</p>
+<p>[latex] P(\eta&gt;0.5|a) = \int_{0.5}^1 \frac{\eta^a (1-\eta)^{n-a} d\eta}{B(a+1, n-a+1)}<del></del>[/latex]</p>
+<p>&nbsp;</p>
+<p>[latex] P(\eta&gt;0.5|a) = 1-I(0.5; a+1, n-a+1). [/latex]</p>
+<p>Looking at the data, there are 573 respondents that give definite choices. Out of 573 people, 294 people choose Ahok (51.3%) and 48.7% other do not choose Ahok. Thus, $latex n=573$ and $latex a=294$. Inserting these numbers from the equation above, we obtain</p>
+<p>[latex] P(\eta&gt;0.5 | a) = 73.5\%. [/latex]</p>
+<p>As conclusion, using the random sampling model, we found that the probability of Ahok wins the election in one round (if the election was when the survey was conducted) is <strong>73.5%</strong>.</p>

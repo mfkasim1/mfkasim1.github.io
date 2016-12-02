@@ -1,0 +1,30 @@
+---
+layout: post
+title: My Paper at NIPS Workshop on Bayesian Optimization
+date: 2016-11-15 11:53:22.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Optimisation
+tags:
+- bayesian optimisation
+- nips
+- shape optimisation
+- soo
+meta:
+  _edit_last: '1'
+author:
+  login: mfkasim
+  email: firman.kasim@gmail.com
+  display_name: mfkasim
+  first_name: ''
+  last_name: ''
+---
+<p>I am really excited today getting an email from BayesOpt16 organiser mentioning that the paper I submitted is accepted for Bayesian Optimization Workshop at NIPS 2016. For students in machine learning field, maybe workshop paper is not as cool as the conference paper, but for me, this makes me really happy, as I learned the topic in my spare time.<!--more--></p>
+<p>As a physics student studying laser-plasma interaction, I usually think how to choose the parameters of laser and plasma to optimise the interactions (e.g. how to efficiently transfer energy from laser to form a wave in plasma, called wakefield, so that it can accelerate electrons to high energy). We have simulation program to simulate the interaction, but it takes quite long time to perform one simulation and also very expensive (e.g. a 3D simulations can take half day using 1024 cores). The optimisation methods that I ever read always need a lot of simulations to get the optimised parameters (e.g. genetic algorithm, CMA-ES). And some of the efficient ones (e.g. gradient descent) need the gradient of each parameter, which is really hard to obtain in laser-plasma simulations.</p>
+<p>I discovered Bayesian Optimisation when I read <a href="https://scholar.google.co.uk/citations?user=nzEluBwAAAAJ&amp;hl=en&amp;oi=ao">Nando de Freitas' publications</a>. The objective of Bayesian Optimisation match exactly the same with what I usually think: optimise a black-box function with minimum number of evaluations without the knowledge of gradient. However, after trying several times Bayesian Optimisation methods, it seems that we need to choose the correct hyper-parameters of the algorithm to work correctly, even though most of the time it works really well. And then I read about <a href="http://papers.nips.cc/paper/4304-optimistic-optimization-of-a-deterministic-function-without-the-knowledge-of-its-smoothness.pdf">Simultaneous Optimistic Optimisation (SOO)</a> which needs less hyper-parameters and more reliable (but sometimes it needs more function evaluations).</p>
+<p>Bayesian Optimisation is suitable for choosing parameters of laser plasma in the simulations to optimise the parameters, but it can't be used to optimise shapes, e.g. what is the shape of laser or density profile of the plasma to make the interaction efficient? Shape optimisation is an infinite dimensional optimisation problem and sometimes can be solved using calculus of variations. The famous example of shape optimisation is the brachistochrone problem. It states, "given two points in space with constant gravity, what is the shape of the path between two points so that a bead can travel without friction from the higher point to the lower point in the shortest time possible?" It can be solved easily using calculus of variations as the Fréchet derivative for that case is easily obtained. But how if I change the case so (1) the bead travel with friction, or (2) the gravity is not constant in space? The Fréchet derivative of the shape is not easily obtained. This is the case for laser-plasma interaction, because the Fréchet derivative of the laser shape and density profile of the plasma are not easily obtained (i.e. they interact non-linearly).</p>
+<p>To optimise the shape, I employed the SOO method. It is a tree-based optimisation method with a very relaxed constraints. Detail of the SOO method can be found in its paper (<a href="http://papers.nips.cc/paper/4304-optimistic-optimization-of-a-deterministic-function-without-the-knowledge-of-its-smoothness.pdf">link</a>). My idea of employing SOO to 1D shape optimisation is as follows. It starts by fixing the positions of two end points and connected by a straight line. Then it place a new point in the middle of the end points and optimise the position of the middle points. The optimum position of the middle points is searched within a searching area. Once it reach several number of evaluations, new points in the middle of existing points are placed for the next stage of the algorithm. The positions of all points, except the end points, are then optimised to give the maximum/minimum function values (e.g. travel time of a bead). So for the first stage, the algorithm only optimises 1D (i.e. the position of the middle point). In the second stage, it optimises 3D (i.e. the previous middle point and two points between the middle points and the end points). And so on. So in the $latex n $-stage, it optimises $latex 2^n-1$ dimensions. The key in this idea is that the search area's width for a stage is 4 times smaller than the search area's width for the previous stage. This makes this algorithm works well for high dimensions optimisation.</p>
+<p>I tested the algorithm to optimise brachistochrone and catenary cases and for both cases, the algorithm works very well. It can determine the optimum positions of 15 points (excluding the end points) in 1000 evaluations. It also outperforms other algorithms employing Bayesian Optimisation, even with smaller number of dimensions, which is 7 (in most cases, higher dimension optimisation is harder to do than lower number of dimensions). I also tested with brachistochrone with friction case (where the Fréchet derivative is hard to obtain) and it also works well. However, I didn't include the latter case in my paper because I haven't found the correct analytic solution as a benchmark (I believe there is one out there).</p>
+<p>My plan for the algorithm is to look for a new idea to make it works with unknown constraints. If I can work out the case with unknown constraints, then I think there will be new physics can be discovered using the method (even though they are not necessarily related to my project). And hopefully I can submit the paper to ICML 2017!</p>
