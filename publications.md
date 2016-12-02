@@ -9,7 +9,8 @@ permalink: /publications/
 ### Selected publications
 
 #### Peer-reviewed journals
-* **M. F. Kasim**, L. Ceurvorst, N. Ratan, J. Sadler, A. Savert, *et al.*, *Quantitative shadowgraphy and proton radiography for large intensity modulations*, Phys. Rev. E (submitted) &  [arXiv:1607.04179](https://arxiv.org/pdf/1607.04179v1.pdf), 2016.
+* **M. F. Kasim**, L. Ceurvorst, N. Ratan, J. Sadler, A. Savert, *et al.*, *Quantitative shadowgraphy and proton radiography for large intensity modulations*, Phys. Rev. E (submitted) &  [arXiv:1607.04179](https://arxiv.org/pdf/1607.04179.pdf), 2016.
+* N. F. Y. Chen, **M. F. Kasim**, L. Ceurvorst, N. Ratan, J. Sadler, *et al.*, *Machine learning applied to proton radiography*, Phys. Rev. E (submitted) & [arXiv:1608.05582](https://arxiv.org/pdf/1608.05582.pdf), 2016.
 * **M. F. Kasim**, J. Holloway, L. Ceurvorst, M. Levy, N. Ratan, *et al.*, *Quantitative single shot and spatially resolved plasma wakefield diagnostics*, [Phys. Rev. ST Accel. Beams **18**, 081302](https://doi.org/10.1103/PhysRevSTAB.18.081302), 2015.
 * **M. F. Kasim**, N. Ratan, L. Ceurvorst, J. Sadler, P. N. Burrows, *et al.*, *Simulation of density measurements in plasma wakefields using photon acceleration*, [Phys. Rev. ST Accel. Beams **18**, 032801](https://doi.org/10.1103/PhysRevSTAB.18.032801), 2015.
 
