@@ -1,0 +1,40 @@
+---
+layout: post
+title: Ijab Qabul Problem
+date: 2016-10-13 16:44:44.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Probability and statistics
+tags:
+- bayesian probability
+- beginner
+- sunrise problem
+meta:
+  _edit_last: '1'
+author:
+  login: mfkasim
+  email: firman.kasim@gmail.com
+  display_name: mfkasim
+  first_name: ''
+  last_name: ''
+---
+<p>The idea of this blog was shown up in my mind on my wedding day. In Indonesian tradition, a groom must say a (long) sentence in front of several chosen people in order to make a marriage. The sentence is called "Ijab Qabul". I was really nervous that day, especially my dad said that I have to memorise the sentence and read it in one breath. If I failed, I have to repeat it again until I make it.</p>
+<p>One hour before the ceremony, I decided to practice the sentence in a silent room. My target is to say the sentence 20 times without failing. If I made a mistake, I have to repeat my count from 0. After trying many times, I could only manage saying the sentence 18 times in a row. And I was thinking, "if I can say the sentence 18 times in a row, what is the probability I can say it without a mistake next time?"<!--more-->I didn't have time to think about it on my wedding day. But several days later, I managed to solve the problem.</p>
+<p>My method is to use Bayesian probability approach. Let's say $latex p $ is the successful probability and $latex p $ can be between 0 to 1. Also, denote $latex k $ as the number of successful events happen in a row. The probability of successful probability has value of $latex p$ given there are $latex k$ successful events is</p>
+<p>[latex] P(p|k) = \frac{P(k|p) P(p)}{P(k)}. [/latex]</p>
+<p>Let's calculate the variables on the right hand side one by one. The variable $latex P(k|p)$ denotes the probability of getting $latex k$ successful events in a row given the successful probability is $latex p$. By a simple <a href="http://www.bbc.co.uk/schools/gcsebitesize/maths/statistics/probabilityhirev2.shtml">AND rule</a>,</p>
+<p>[latex] P(k|p) = p^k. [/latex]</p>
+<p>Now, for the probability of successful probability having value of $latex p$, $latex P(p)$, is a bit different. The range of $latex p$ is continuous, so instead of calculating the probability of successful probability having the exact value of $latex p$, we can calculate the probability having the value <strong>between</strong> $latex p$ and $latex p + dp$, which is</p>
+<p>[latex] P(p) = dp\ \mathrm{for}\ p \in [0,1]. [/latex]</p>
+<p>Lastly, we need to compute the probability of getting $latex k$ successful events in a row, considering all possible values of $latex p$. This can be done by some integration</p>
+<p>[latex] P(k) = \int_0^1 P(k|p) dp = \int_0^1 p^k dp = \frac{1}{k+1}. [/latex]</p>
+<p>Now combining all the variables, we can get the probability of the successful probability having value of $latex p$, given there are $latex k$ successful events in a row,</p>
+<p>[latex] P(p|k) = (k+1) p^k dp. [/latex]</p>
+<p>We already obtained the probability distribution of $latex p$, but this does not answer our original question, "what is the probability of the next event successful?"</p>
+<p>To answer that question, we can calculate the expected value of $latex p$,</p>
+<p>[latex] \mathbb{E}(p|k) = \int_0^1 p P(p|k) = (k+1) \int_0^1 p^{k+1} dp = \frac{k+1}{k+2}. [/latex]</p>
+<p>So, the probability of having the next event successful, given there are already $latex k$ successful events in a row, is $latex (k+1)/(k+2)$.</p>
+<p>For my case, I can say the sentence 18 times in a row without a mistake. So the probability of saying it correctly next time is 95%.</p>
+<p>Side note: it turns out that during Ijab Qabul, the <em>imaam</em> gave me a paper containing the text, so I can just read it. And also, I realised later that this problem is actually the "<a href="https://en.wikipedia.org/wiki/Sunrise_problem">sunrise problem</a>".</p>
