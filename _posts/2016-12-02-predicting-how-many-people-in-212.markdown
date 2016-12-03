@@ -68,3 +68,21 @@ $$
 Based on my estimation, there are about 400,000 people during the rally. It is really far from some claims that said it was 2 million or even 7 million.
 
 The number is estimated from the pictures shown in this blog. If you have additional picture to refine my estimate, feel free to contact me.
+
+**UPDATE**
+
+There has been many inputs from other people that there are several regions are not covered on the map.
+So I took the inputs and let's update the estimate.
+One of my friend said that there were also people that were praying in Tugu Tani (green arrow below).
+And another friend said that he was praying in a place I didn't mark and he witnessed there were still long line behind him (red arrow below).
+Let's expand the mask.
+
+<img title="Monas markdown 03" src="{{ site.baseurl }}/assets/monas-markdown-03.png" width="300"/>
+
+<img title="Monas mask 02" src="{{ site.baseurl }}/assets/monas-mask-02.png" width="300"/>
+
+Applying the same code as above (with appropriate file name), we obtain the pixels covered by the mask is 178244 pixels.
+And for the space occupied by a person, there are some people say that it was really cramped during the prayer, and they estimated to be around 3 persons per square meter.
+Let's take that number as the upper bound estimate.
+Therefore, with the same scale as before, with 3 persons per square meter, it is estimated that there were about **757,840** people during the rally.
+If we are using 2 persons per square meter as before, there were about **505,227** people.
