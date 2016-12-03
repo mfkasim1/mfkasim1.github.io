@@ -24,7 +24,6 @@ permalink: /:year/:month/:day/:title/
 
 # Build settings
 markdown: kramdown
-# please uncomment if needed theme: minima
 gems:
   - jekyll-feed
 exclude:
