@@ -30,17 +30,15 @@ Let's denote \\(d=12\\) as the \\(d\\)-th paper submitted, \\(r=9\\) as the \\(r
 and \\(s\\) as the total papers submitted. It is clear enough to say that \\(s \geq a\\), as it is impossible to have more accepted papers than submitted papers.
 Given those information, we want to calculate the probability of \\(s\\),
 
-\begin{equation}
+\begin{equation}P(s|a,d,r) = \frac{P(a|d,r,s)P(s)}{\sum_{s_i=a}^{\infty} P(a|d,r,s_i)P(s_i)}.
 \label{eq:bayes}
-P(s|a,d,r) = \frac{P(a|d,r,s)P(s)}{\sum_{s_i=a}^{\infty} P(a|d,r,s_i)P(s_i)}.
 \end{equation}
 
 In order to calculate \\(P(a|d,r,s)\\) from the equation above, we introduce a new variable, \\(\eta\\), the acceptance rate for large samples.
 Given the acceptance rate, \\(\eta\\), and the total submissions, \\(s\\), we can calculate the probability of having number of accepted papers, \\(a\\), using binomial distribution,
 
-\begin{equation}
+\begin{equation}P(a|s,\eta) = \left(\begin{array}{c} s \\ a \end{array}\right) \eta^a (1-\eta)^{s-a}.
 \label{eq:a-s-eta}
-P(a|s,\eta) = \left(\begin{array}{c} s \\ a \end{array}\right) \eta^a (1-\eta)^{s-a}.
 \end{equation}
 
 To get the probability distribution value of \\(\eta\\), we can use beta distribution with information that there are \\(r\\) papers accepted out of \\(d\\) submissions.
@@ -51,17 +49,16 @@ This is in similar form with the result on my [previous post](http://sp.mfkasim.
 P(\eta | d,r)\ \mathrm{d}\eta = \frac{\eta^r (1-\eta)^{d-r}}{B(r+1,d-r+1)}\ \mathrm{d}\eta,
 \end{equation}
 
-where \\(B(\alpha, \beta\\) is the [beta function](https://en.wikipedia.org/wiki/Beta_function).
+where \\(B(\alpha, \beta)\\) is the [beta function](https://en.wikipedia.org/wiki/Beta_function).
 
-Now we can use equation \eqref{eq:a-s-eta} and \eqref{eq:eta-d-r} to obtain \\( P(a | d, r, s) \\),
+Now we can use equation \eqref{eq:a-s-eta} and \eqref{eq:eta-d-r} to obtain \\(P(a|d,r,s)\\) ,
 
-\begin{equation}
-\label{eq:a-d-r-s}
-\begin{split}
+\begin{equation}\begin{split}
 P(a|d,r,s) & = \int_0^1 P(a|s,\eta) P(\eta|d,r)\ \mathrm{d}\eta \\
            & = \left(\begin{array}{c} s \\ a \end{array}\right) \frac{1}{B(r+1,d-r+1)} \int_0^1 \eta^{a+r} (1-\eta)^{s-a+d-r}\ \mathrm{d}\eta
            & = \left(\begin{array}{c} s \\ a \end{array}\right) \frac{B(a+r+1, s-a+d-r+1)}{B(r+1, d-r+1)}.
 \end{split}
+\label{eq:a-d-r-s}
 \end{equation}
 
 Obtaining \\(P(a|d,r,s)\\), we can use the Bayes theorem in equation \eqref{eq:bayes} to estimate the number of submissions.
@@ -70,17 +67,16 @@ This is also the same prior assumption in [German tank problem](https://en.wikip
 As this is a very small number, we can denote it as \\(\Omega\\).
 Thus,
 
-\begin{equation}
-\label{eq:final-results}
-\begin{split}
+\begin{equation}\begin{split}
 P(s|a,d,r) & = \left(\begin{array}{c} s \\ a \end{array}\right) \frac{B(a+r+1, s-a+d-r+1)}{B(r+1, d-r+1)} \Omega
                \left[\sum_{s_i=a}^{\infty} \left(\begin{array}{c} s_i \\ a \end{array}\right) \frac{B(a+r+1, s_i-a+d-r+1)}{B(r+1, d-r+1)} \Omega \right]^{-1} \\
            & = \left(\begin{array}{c} s \\ a \end{array}\right) B(a+r+1, s-a+d-r+1)
                \left[\sum_{s_i=a}^{\infty} \left(\begin{array}{c} s_i \\ a \end{array}\right) B(a+r+1, s_i-a+d-r+1) \right]^{-1}.
 \end{split}
+\label{eq:final-results}
 \end{equation}
 
-With the equation \eqref{eq:final-results}, it is now possible to calculate and plot the probability distribution.
+With the equation above, it is now possible to calculate and plot the probability distribution.
 The probability distribution of number of submissions is shown below.
 
 <a href="{{ site.baseurl }}/assets/submissions-probability.png"><img src="Probability distribution" src="{{ site.baseurl }}/assets/submissions-probability.png"/></a>
