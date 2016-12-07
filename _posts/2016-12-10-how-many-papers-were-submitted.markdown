@@ -81,5 +81,5 @@ The probability distribution of number of submissions is shown below.
 
 <a href="{{ site.baseurl }}/assets/submissions-probability.png"><img src="Probability distribution" src="{{ site.baseurl }}/assets/submissions-probability.png"/></a>
 
-From the equation \eqref{eq:final-results}, we can calculate the most probable number of submissions, expected number of submissions as well as its standard deviation.
+From the last equation, we can calculate the most probable number of submissions, expected number of submissions as well as its standard deviation.
 The most probable number of submissions is \\(31\\), while the expected number of submissions is \\(36.5 \pm 9.4\\).
