@@ -129,7 +129,7 @@ One problem with the grayscale image is that darker regions have lower pixel val
 On the other hand, we want more dots in darker regions and less dots in brighter regions.
 The solution is just to take the complement of the image.
 
-<a href="{{ site.baseurl }}/assets/jokowi-process.png"><img title="Pre-processing" src="{{ site.baseurl }}/assets/jokowi-process.jpg" width="700"/></a>
+<a href="{{ site.baseurl }}/assets/jokowi-process.jpg"><img title="Pre-processing" src="{{ site.baseurl }}/assets/jokowi-process.jpg" width="700"/></a>
 
 Once the complement is taken, we can deploy random dots on the image and perform the weighted Lloyd's algorithm.
 To make it converge faster, I used simple rejection method when deploying the random dots.
