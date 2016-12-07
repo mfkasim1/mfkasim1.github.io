@@ -53,7 +53,7 @@ P(\eta | d,r)\ \mathrm{d}\eta = \frac{\eta^r (1-\eta)^{d-r}}{B(r+1,d-r+1)}\ \mat
 
 where \\(B(\alpha, \beta\\) is the [beta function](https://en.wikipedia.org/wiki/Beta_function).
 
-Now we can use equation \eqref{eq:a-s-eta} and \eqref{eq:eta-d-r} to obtain \\(P(a|d,r,s)\\),
+Now we can use equation \eqref{eq:a-s-eta} and \eqref{eq:eta-d-r} to obtain \\( P(a | d, r, s) \\),
 
 \begin{equation}
 \label{eq:a-d-r-s}
