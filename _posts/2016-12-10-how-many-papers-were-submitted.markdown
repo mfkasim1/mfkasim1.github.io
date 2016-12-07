@@ -30,22 +30,26 @@ Let's denote \\(d=12\\) as the \\(d\\)-th paper submitted, \\(r=9\\) as the \\(r
 and \\(s\\) as the total papers submitted. It is clear enough to say that \\(s \geq a\\), as it is impossible to have more accepted papers than submitted papers.
 Given those information, we want to calculate the probability of \\(s\\),
 
-\begin{equation}P(s|a,d,r) = \frac{P(a|d,r,s)P(s)}{\sum_{s_i=a}^{\infty} P(a|d,r,s_i)P(s_i)}.
-\label{eq:bayes}\end{equation}
+$$\begin{equation}
+P(s|a,d,r) = \frac{P(a|d,r,s)P(s)}{\sum_{s_i=a}^{\infty} P(a|d,r,s_i)P(s_i)}.
+\label{eq:bayes}
+\end{equation}$$
 
 In order to calculate \\(P(a|d,r,s)\\) from the equation above, we introduce a new variable, \\(\eta\\), the acceptance rate for large samples.
 Given the acceptance rate, \\(\eta\\), and the total submissions, \\(s\\), we can calculate the probability of having number of accepted papers, \\(a\\), using binomial distribution,
 
-\begin{equation}P(a|s,\eta) = \left(\begin{array}{c} s \\ a \end{array}\right) \eta^a (1-\eta)^{s-a}.
-\label{eq:a-s-eta}\end{equation}
+$$\begin{equation}
+\label{eq:a-s-eta}
+P(a|s,\eta) = \left(\begin{array}{c} s \\ a \end{array}\right) \eta^a (1-\eta)^{s-a}.
+\end{equation}$$
 
 To get the probability distribution value of \\(\eta\\), we can use beta distribution with information that there are \\(r\\) papers accepted out of \\(d\\) submissions.
 This is in similar form with the result on my [previous post](http://sp.mfkasim.com/2016/10/21/what-is-the-chance-ahok-wins-the-election-in-one-round/),
 
-\begin{equation}
+$$\begin{equation}
 \label{eq:eta-d-r}
 P(\eta | d,r)\ \mathrm{d}\eta = \frac{\eta^r (1-\eta)^{d-r}}{B(r+1,d-r+1)}\ \mathrm{d}\eta,
-\end{equation}
+\end{equation}$$
 
 where \\(B(\alpha, \beta)\\) is the [beta function](https://en.wikipedia.org/wiki/Beta_function).
 
