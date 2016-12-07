@@ -51,12 +51,12 @@ where \\(B(\alpha, \beta)\\) is the [beta function](https://en.wikipedia.org/wik
 
 Now we can use equation \eqref{eq:a-s-eta} and \eqref{eq:eta-d-r} to obtain \\(P(a|d,r,s)\\) ,
 
-\begin{align}
+$$\begin{align}
 \label{eq:a-d-r-s}
 P(a|d,r,s) & = \int_0^1 P(a|s,\eta) P(\eta|d,r)\ \mathrm{d}\eta \nonumber \\
            & = \left(\begin{array}{c} s \\ a \end{array}\right) \frac{1}{B(r+1,d-r+1)} \int_0^1 \eta^{a+r} (1-\eta)^{s-a+d-r}\ \mathrm{d}\eta \nonumber \\
            & = \left(\begin{array}{c} s \\ a \end{array}\right) \frac{B(a+r+1, s-a+d-r+1)}{B(r+1, d-r+1)}.
-\end{align}
+\end{align}$$
 
 Obtaining \\(P(a|d,r,s)\\), we can use the Bayes theorem in equation \eqref{eq:bayes} to estimate the number of submissions.
 Assuming that the probability of having number of submissions, \\(s\\), is uniform from \\(a\\) to \\(\infty\\).
@@ -64,13 +64,13 @@ This is also the same prior assumption in [German tank problem](https://en.wikip
 As this is a very small number, we can denote it as \\(\Omega\\).
 Thus,
 
-\begin{align}
+$$\begin{align}
 \label{eq:final-results}
 P(s|a,d,r) & = \left(\begin{array}{c} s \\ a \end{array}\right) \frac{B(a+r+1, s-a+d-r+1)}{B(r+1, d-r+1)} \Omega
                \left[\sum_{s_i=a}^{\infty} \left(\begin{array}{c} s_i \\ a \end{array}\right) \frac{B(a+r+1, s_i-a+d-r+1)}{B(r+1, d-r+1)} \Omega \right]^{-1} \nonumber \\
            & = \left(\begin{array}{c} s \\ a \end{array}\right) B(a+r+1, s-a+d-r+1)
                \left[\sum_{s_i=a}^{\infty} \left(\begin{array}{c} s_i \\ a \end{array}\right) B(a+r+1, s_i-a+d-r+1) \right]^{-1}.
-\end{align}
+\end{align}$$
 
 With the equation above, it is now possible to calculate and plot the probability distribution.
 The probability distribution of number of submissions is shown below.
