@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How many papers were submitted?"
+title:  "How many papers were submitted to BayesOpt16?"
 comments: true
 date:   2016-12-10 14:22:00 +0000
 categories:
@@ -83,3 +83,10 @@ The probability distribution of number of submissions is shown below.
 
 From the last equation, we can calculate the most probable number of submissions, expected number of submissions as well as its standard deviation.
 The most probable number of submissions is \\(31\\), while the expected number of submissions is \\(36.5 \pm 9.4\\).
+
+**UPDATE**
+
+In BayesOpt16 workshop, the organiser mentioned that there are **31** papers were submitted to the workshop.
+The prediction is correct!
+
+<a href="{{ site.baseurl }}/assets/submitted-papers.jpg"><img src="Number of papers submitted" src="{{ site.baseurl }}/assets/submitted-papers.jpg" width="400"/></a>
