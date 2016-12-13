@@ -12,6 +12,8 @@ tags:
 - lloyds algorithm
 ---
 
+(The MATLAB code can be found [here](https://github.com/mfkasim91/stippling-lloyds))
+
 When I was doing my project about [inverting proton radiograms and shadowgrams](https://arxiv.org/pdf/1607.04179.pdf), I discovered that the technique I employed can be used to make stipple pictures.
 The stippling technique I explained below comes from [this paper](https://www.cs.ubc.ca/labs/imager/tr/2002/secord2002b/secord.2002b.pdf).
 
