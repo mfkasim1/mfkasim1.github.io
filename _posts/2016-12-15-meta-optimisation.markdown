@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Meta optimisation and my solution at ISCSO 2016"
+title:  "My solution at ISCSO 2016 and meta optimisation"
 comments: true
 date:   2016-12-15 19:12:00 +0000
 categories:
