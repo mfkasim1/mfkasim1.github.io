@@ -47,7 +47,7 @@ However, with the array implementation in C++, the program only needs 1.6 second
 Thinking it can be further optimised, I implemented the bit operation in C++. Fortunately, my version of G++ has `__int128` type for integer 128 bits.
 In short, the bit-operation implementation in C++ outperforms all my other implementations: 100,000 random plays (about 1,800,000 steps) in 0.75 second.
 
-| Language&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Implementation | Plays&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Time (s)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Time / plays (us)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Speed up |
+| Language&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Implementation &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Plays&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Time (s)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Time / plays (us)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Speed up |
 | -------- | -------------- | ------: | -------: | ----------------: | -------: |
 | Python   | Bit-operation  | 10,000  | 5.2      | 520               |    1     |
 | C++      | Array          | 100,000 | 1.6      |  16               | 32.5     |
