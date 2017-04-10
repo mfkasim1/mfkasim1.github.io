@@ -33,7 +33,7 @@ My first implementation was in Python, using binary representation of the board.
 The upper left square is represented by the least significant bit (0th bit), the square on the right of it is the first bit, the leftmost square of the 2nd row is the 10th bit, and so on.
 Every tile is encoded using the bit representation, e.g. the tile with 5 squares in a row is represented by `0b11111`, 2 squares in a column is `0b10000000001000000000`.
 If the tile is placed at some positions on the board, the tile's bits are shifted to the left by the corresponding amount.
-Checking if the tile can be placed on a certain place can be done by doing AND operation. Putting the tile on the board is done by OR operation.
+Checking if the tile can be placed on a certain place can be done by doing `AND` operation. Putting the tile on the board is done by `OR` operation. Removing rows and columns can be done by `XOR` operation.
 
 To check the performance, I run some random plays with these steps: (1) list all valid steps, (2) choose a valid step randomly, (3) repeat from step (1) until the no valid step available.
 With Python, the program can run 10,000 random plays (about 180,000 steps) in about 5.2 seconds.
