@@ -58,13 +58,13 @@ i.e.
 
 $$\begin{equation}
 \begin{pmatrix}
-\mathbf{f}
+\mathbf{f}\\
 \mathbf{y}
 \end{pmatrix}
  = 
 \mathbf{Af} =
 \begin{pmatrix}
-\mathbf{I}
+\mathbf{I}\\
 \mathbf{S}
 \end{pmatrix}
 \mathbf{f}.
