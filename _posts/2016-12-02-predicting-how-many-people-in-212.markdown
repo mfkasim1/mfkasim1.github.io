@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Predicting how many people were in 212 prayer rally"
+title:  "Estimating how many people were in 212 prayer rally"
 comments: true
 date:   2016-12-02 22:14:12 +0000
 categories:
