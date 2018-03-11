@@ -18,3 +18,8 @@ permalink: /publications/
 * **M. F. Kasim** and P. A. Norreys, *Infinite dimensional optimistic optimisation with applications on physical systems*, [Bayesian Optimization Workshop at NIPS](https://bayesopt.github.io/papers/2016/Kasim.pdf) & [arXiv:1611.05845](https://arxiv.org/pdf/1611.05845v1.pdf), 2016. ([poster]({{ site.baseurl }}/assets/poster-mlsoo.pdf))
 * **M. F. Kasim**, T. Adiono, M. Fahreza, M. F. Zakiy, *FPGA Implementation of Fixed-Point Divider Using Pre-Computed Values*, [ICEEI](https://doi.org/10.1016/j.protcy.2013.12.182), 2013.
 * **M. F. Kasim**, T. Adiono, M. Fahreza, M. F. Zakiy, *Real-time Architecture and FPGA Implementation of Adaptive General Spectral Substraction Method*, [ICEEI](https://doi.org/10.1016/j.protcy.2013.12.180), 2013.
+
+### Invited talks
+
+* *Optimal transport in proton radiography and shadowgraphy*, Plasma Physics
+group seminar at Imperial College London, 7 March 2018.
