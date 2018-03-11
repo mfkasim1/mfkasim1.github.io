@@ -75,4 +75,6 @@ deflection potential. Multiplying the deflection potentials with
 src="{{ site.baseurl }}/assets/faces-animation.gif"
 width="150"/>
 
-It was fun!
+The face interpolation demo can be found in my
+[GitHub repo](https://github.com/mfkasim91/invert-shadowgraphy/tree/fast-inverse)
+in the *demo_face_interpolation.m* file.
