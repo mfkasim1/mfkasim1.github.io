@@ -13,7 +13,7 @@ tags:
 Can you make a variable , \\(a\\), in Python that can take
 as many pairs of brackets and returns the number of pairs of the brackets?
 
-Example:
+Example: 
 
 {% highlight python %}
 >>> a
