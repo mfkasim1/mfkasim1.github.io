@@ -222,12 +222,13 @@ you really want to get a good regularization factor.
 {% highlight python %}
 Treg_norm = Treg / np.sum(Treg, axis=1)[:,None]
 xreg_t_mean = np.matmul(Treg_norm, xhist_new[:,None]).flatten()
-xreg_t_std = np.matmul(Treg_norm, (xhist_new-xreg_t_mean)[:,None]** 2).flatten()
+xreg_t_var = np.matmul(Treg_norm, (xhist_new-xreg_t_mean)[:,None]** 2).flatten()
+xreg_t_std = np.sqrt(xreg_t_var)
 
 # plot
 plt.plot(xhist_old, xreg_t_mean)
-plt.fill_between(xhist_old, xreg_t_mean - xreg_t_std,
-                 xreg_t_mean + xreg_t_std, alpha=0.2)
+plt.fill_between(xhist_old, xreg_t_mean-xreg_t_std,
+                 xreg_t_mean+xreg_t_std, alpha=0.2)
 plt.xlabel("Original online time")
 plt.ylabel("New online time")
 {% endhighlight %}
