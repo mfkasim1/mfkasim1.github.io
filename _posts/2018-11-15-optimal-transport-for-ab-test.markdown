@@ -252,6 +252,8 @@ plt.ylabel("Online time increment")
 
 Here we can see a new insight by incorporating the uncertainty: the
 least-engaged visitors almost surely spend more time with the new design.
+This insight cannot be obtained if we just see the average of the distribution
+and without incorporating the uncertainty in the quantile analysis.
 
 ## Conclusions
 We have seen here that optimal transport can be used to analyze A/B testing
