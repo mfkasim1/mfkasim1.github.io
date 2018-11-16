@@ -76,7 +76,7 @@ $$
 \begin{align}
 T(x) &= \mathrm{argmin}_{T(x)} \int_{-\infty}^{\infty} \left[x - T(x)\right]^2
                                                       \rho_s(x) dx \\
-     ~ & \mathrm{s.t.} \rho_s(x) = \rho_t(T(x)) \frac{dT(x)}{dx}
+     ~ & \mathrm{s.t.}~\rho_s(x) = \rho_t(T(x)) \frac{dT(x)}{dx}
 \end{align}
 $$
 
@@ -229,6 +229,7 @@ xreg_t_std = np.sqrt(xreg_t_var)
 plt.plot(xhist_old, xreg_t_mean)
 plt.fill_between(xhist_old, xreg_t_mean-xreg_t_std,
                  xreg_t_mean+xreg_t_std, alpha=0.2)
+plt.plot(xhist_old, xhist_old, '--')
 plt.xlabel("Original online time")
 plt.ylabel("New online time")
 {% endhighlight %}
