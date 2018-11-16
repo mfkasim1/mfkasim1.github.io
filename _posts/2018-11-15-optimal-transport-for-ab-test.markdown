@@ -81,7 +81,7 @@ T(x) &= \mathrm{argmin}_{T(x)} \int_{-\infty}^{\infty} \left[x - T(x)\right]^2
 $$
 
 The integrand above is the amount of work required to move a small amount of
-source, \\(\rho_s dx\\), from \\(x\\) to \\(T(x)\\), and the constraints just
+source, \\(\rho_s dx\\), from \\(x\\) to \\(T(x)\\), and the constraint is just
 enforcing the mass conservation.
 
 To solve this, first let's define the cumulative function of the sources and
