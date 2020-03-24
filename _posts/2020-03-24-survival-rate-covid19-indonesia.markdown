@@ -161,7 +161,7 @@ One constraint is applied by restricting the basic reproduction number
 
 ## Results
 
-### Verification using data from China
+### Validation using data from China
 
 To verify the model, we need data that shows exponential growing at the
 beginning of the outbreak and stabilize at the end to know the actual survival
@@ -184,7 +184,7 @@ We can see that the posterior distribution of the survival rate in China is
 
 ### Survival rate estimation in Indonesia
 
-After a simple verification of the model on China's data, I applied the same
+After a simple validation of the model on China's data, I applied the same
 technique for Indonesia.
 Here I took the data from 18-24 March 2020 because it shows approximately
 exponential growth and the ratios are more or less constant.
