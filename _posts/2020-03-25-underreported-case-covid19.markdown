@@ -22,6 +22,15 @@ infection.
 With the total 790 reported case (as of 25 March 2020), there might be about
 34,000 infections currently (which most of them are mild).
 
+**NOTE**: to avoid unnecessary panic, it is now known that most infection
+cases are mild and some cases are even asymptomatic.
+
+## Assumptions
+
+* The median of confirmed-to-death time is assumed to be between 9 to 13 days
+* The infection fatality rate is \\(0.66^{+0.13}\_{-0.13}\%\\), based on the
+estimate from \[[1](https://www.medrxiv.org/content/10.1101/2020.03.09.20033357v1.full.pdf)\]
+
 ## Introduction
 
 The analysis results from the previous post shows that the case survival rate
