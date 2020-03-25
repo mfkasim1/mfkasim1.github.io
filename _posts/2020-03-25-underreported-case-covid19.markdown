@@ -55,5 +55,7 @@ $$\begin{equation}
 By putting \\(\mathrm{CFR} = 29^{+3}\_{-3}\%\\) and the assumed
 \\(\mathrm{IFR} = 0.66^{+0.13}\_{-0.13}\\), we obtain the reported fraction is
 only \\(2.3^{+0.5}\_{-0.5}\%\\) of the total infection.
+This estimate is similar to the results of the study
+[here](https://cmmid.github.io/topics/covid19/severity/global_cfr_estimates.html).
 With the total 790 reported case (as of 25 March 2020), the number translates to
 34,000 number of infections currently.
