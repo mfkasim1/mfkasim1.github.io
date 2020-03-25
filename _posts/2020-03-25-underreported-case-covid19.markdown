@@ -16,8 +16,8 @@ Using the same model as the
 [previous post](https://mfkasim91.github.io/2020/03/24/survival-rate-covid19-indonesia/),
 (a model that takes into account delay in recovery and death), and assuming the
 infection fatality rate (chance of fatality **if infected**) is
-\\(0.66^{+0.13}_{-0.13}\%\\) \[[1](https://www.medrxiv.org/content/10.1101/2020.03.09.20033357v1.full.pdf)\],
-I found that the reported case is only \\(2.3^{+0.5}_{-0.5}\%\\) of the total
+\\(0.66^{+0.13}\_{-0.13}\%\\) \[[1](https://www.medrxiv.org/content/10.1101/2020.03.09.20033357v1.full.pdf)\],
+I found that the reported case is only \\(2.3^{+0.5}\_{-0.5}\%\\) of the total
 infection.
 With the total 790 reported case (as of 25 March 2020), there might be about
 34,000 infections currently (which most of them are mild).
@@ -38,7 +38,7 @@ are heavily skewed towards severe cases and underreporting the mild case.
 Calculating the infection fatality rate is much harder as it requires mass-testing
 which is still a problem in Indonesia.
 However, there has been an estimate of the infection fatality rate in China
-is about \\(0.66^{+0.13}_{-0.13}\%\\) (86% confidence interval).
+is about \\(0.66^{+0.13}\_{-0.13}\%\\) (86% confidence interval).
 By assuming the infection fatality rate is the same in Indonesia, we can estimate
 how much the unreported infection in Indonesia.
 
@@ -52,13 +52,8 @@ $$\begin{equation}
 \mathrm{reported\_fraction} = \frac{\mathrm{estimated\_IFR}}{\mathrm{estimated\_CFR}}
 \end{equation}$$
 
-By putting \\(\mathrm{CFR} = 29^{+3}_{-3}\%\\) and the assumed
-\\(\mathrm{IFR} = 0.66^{+0.13}_{-0.13}\\), we obtain the reported fraction is
-only \\(2.3^{+0.5}_{-0.5}\%\\) of the total infection.
+By putting \\(\mathrm{CFR} = 29^{+3}\_{-3}\%\\) and the assumed
+\\(\mathrm{IFR} = 0.66^{+0.13}\_{-0.13}\\), we obtain the reported fraction is
+only \\(2.3^{+0.5}\_{-0.5}\%\\) of the total infection.
 With the total 790 reported case (as of 25 March 2020), the number translates to
 34,000 number of infections currently.
-
-### Code availability
-
-The code is available [here](https://github.com/mfkasim91/idcovid19) with BSD
-3-clause license.
