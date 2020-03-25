@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How much is the COVID19 case underreported in Indonesia?"
+title:  "How many unreported COVID19 infections are in Indonesia?"
 comments: true
 date:   2020-03-25 10:49:12 +0000
 published: true
@@ -40,22 +40,23 @@ I need to reiterate that this number is defined as the chance of fatality
 This is different from the infection fatality rate (IFR) which is the chance of
 fatality **if being infected** in Indonesia.
 The high calculated case fatality rate is most probably due to the reported cases
-are heavily skewed towards severe cases and underreporting the mild case.
+being heavily skewed towards severe cases and underreporting the mild case.
 
 ## Results
 
-Calculating the infection fatality rate is much harder as it requires mass-testing
-which is still a problem in Indonesia.
-However, there has been an estimate of the infection fatality rate in China
-is about \\(0.66^{+0.13}\_{-0.13}\%\\) (86% confidence interval).
-By assuming the infection fatality rate is the same in Indonesia, we can estimate
-how much the unreported infection in Indonesia.
+Calculating the infection fatality rate accurately is much harder as it
+requires mass-testing for everyone, including the ones with mild or even no symptoms.
+This is still a highly challenging task.
+However, there has been an estimate of the infection fatality rate in China,
+which is about \\(0.66^{+0.13}\_{-0.13}\%\\) (86% confidence interval).
+By assuming the infection fatality rate in Indonesia is similar to that number,
+we can estimate how many unreported infections in Indonesia.
 
 With the infection fatality rate about 0.66%, most of the infected patients will
 be recovered or even do not develop the symptoms.
 So we can assume that the unreported infection in Indonesia is mostly dominated
 by patients who will survive.
-With this assumption, the reported fraction can be calculated by simply as
+With this assumption, the reported fraction can be calculated simply as
 
 $$\begin{equation}
 \mathrm{reported\_fraction} = \frac{\mathrm{estimated\_IFR}}{\mathrm{estimated\_CFR}}
