@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Estimating the survival rate from COVID19 in Indonesia"
+title:  "Estimating the case survival rate from COVID19 in Indonesia"
 comments: true
 date:   2020-03-24 15:39:42 +0000
 published: true
@@ -10,6 +10,16 @@ tags:
 - Bayesian inference
 ---
 
+## Summary
+
+Using a model that takes into account delay in recovery and death, I calculate
+there is a 71% chance of survival from the confirmed case.
+**This does not mean that there is a 71% chance of survival if infected by the virus,
+but this means, with the current government testing scheme, there is a 71% chance
+of survival if the government confirms positive.**
+The low number of case survival rate could indicate that the current reported
+number of confirmed cases is heavily disproportionate towards the severe cases.
+
 ## Introduction
 
 With almost all parts of the world is observing the outbreak of COVID19, one
@@ -17,31 +27,31 @@ thing that worries me is the situation in my home country, Indonesia.
 As of 24 March 2020, there are 686 patients confirmed to have the nCov-2019.
 Worryingly, out of 85 patients that have outcomes, there are 65% death cases
 (55 patients) and 35% of the patients recovered (30 patients).
-However, the 35% should not be taken as the survival rate as it might take
+However, the 35% should not be taken as the case survival rate as it might take
 longer for the survived patients to be declared as fully recovered than
 the deceased patients to be declared as deceased.
 
 Another way to estimate the death rate is by dividing the current accumulated
 deceased patients with the total confirmed case.
-This way, we get an estimate of 92% survival rate (i.e. 1 - 55/686).
+This way, we get an estimate of 92% case survival rate (i.e. 1 - 55/686).
 Unfortunately, the number might not be accurate because not every active case
 will end up being recovered.
 
-This naturally raises a question: can we estimate the survival rate from the
+This naturally raises a question: can we estimate the case survival rate from the
 early outbreak data?
 
 ## Model
 
-Estimating the survival rate from the early outbreak data requires some
+Estimating the case survival rate from the early outbreak data requires some
 assumption to build a mathematical model and fit the model to the data.
-From the fitting result, one can then infer the estimated survival rate.
+From the fitting result, one can then infer the estimated case survival rate.
 
 The model I am using here is a modified
 [SEIR](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SEIR_model)
 model, but with splitting paths ending up in recovery and death.
 Here is the schematics of the model:
 
-<img title="Model to estimate survival rate" src="{{ site.baseurl }}/assets/idcovid19/model.png" width="100%"/>
+<img title="Model to estimate case survival rate" src="{{ site.baseurl }}/assets/idcovid19/model.png" width="100%"/>
 
 The states of people in the model are:
 
@@ -62,7 +72,7 @@ To describe the transition between the states, I used several variables:
 3. \\(\tau_{conf}\\) (Confirmed period): how long it takes for a person to be confirmed positive once developed the symptoms.
 4. \\(\tau_{dec}\\) (Deceased period): how long it takes from being confirmed to be deceased (if they will).
 5. \\(\tau_{rec}\\) (Recovery period): how many days from being confirmed to be recovered (if they will).
-6. \\(\eta\\) (Survival rate): the chance of a patient confirmed to have the virus to be recovered.
+6. \\(\eta\\) (Case survival rate): the chance of a patient confirmed to have the virus to be recovered.
 
 If we know the parameters above and the initial condition, we can predict how
 many people in every state (e.g. how many infectious people in a given time).
@@ -169,20 +179,20 @@ rate.
 The only country that satisfies this requirement is China.
 We took the data from [here](https://www.worldometers.info/coronavirus/country/china/)
 and took the data from 22-28 January 2020 as the exponential growing part.
-From the current data, the survival rate is about 95.7%.
+From the current data, the case survival rate is about 95.7%.
 
 Based on the model above, we drew 1,000 samples from the posterior distribution
 using Markov Chain Monte Carlo.
-Here is the posterior distribution of the survival rate and the basic
+Here is the posterior distribution of the case survival rate and the basic
 reproduction rate (\\(R_0\\)) after constraining \\(R_0\\) to be less than 4.
 
-<img title="Posterior distribution of survival rate in China" src="{{ site.baseurl }}/assets/idcovid19/params_china.png" width="80%"/>
+<img title="Posterior distribution of case survival rate in China" src="{{ site.baseurl }}/assets/idcovid19/params_china.png" width="80%"/>
 
-We can see that the posterior distribution of the survival rate in China is
+We can see that the posterior distribution of the case survival rate in China is
 \\(\eta = 94^{+2}_{-10}\%\\), which is really close to the current number
 (\\(95.7\%\\))
 
-### Survival rate estimation in Indonesia
+### Case survival rate estimation in Indonesia
 
 After a simple validation of the model on China's data, I applied the same
 technique for Indonesia.
@@ -195,21 +205,24 @@ This estimate was obtained from table compiled by
 [KawalCOVID19](https://kawalcovid19.blob.core.windows.net/viz/statistik_harian.html).
 
 From the sampled posterior distribution and the constraints, here is the
-posterior distribution of the survival rate in Indonesia.
+posterior distribution of the case survival rate in Indonesia.
 
-<img title="Posterior distribution of survival rate in China" src="{{ site.baseurl }}/assets/idcovid19/params_indonesia.png" width="80%"/>
+<img title="Posterior distribution of case survival rate in China" src="{{ site.baseurl }}/assets/idcovid19/params_indonesia.png" width="80%"/>
 
-As seen in the Figure above, the survival rate in Indonesia is approximately
+As seen in the Figure above, the case survival rate in Indonesia is approximately
 \\(\eta = 71^{+3}_{-3}\%\\), which is worryingly low.
+This does not mean that there is a 71% chance of survival if infected by the virus,
+but this mean, with the current government testing scheme, there is 71% chance
+of survival if the government confirms positive.
 
 ### Caveats
 
 The numbers above should be taken with several caveats:
 
-1. The survival rate depends heavily on the estimated deceased period
+1. The case survival rate depends heavily on the estimated deceased period
 (i.e. the time a person to be deceased after being confirmed).
 For example, constraining the deceased period to be between 1 to 4 days gives
-the survival rate about 88%.
+the case survival rate about 88%.
 As the data to estimate this parameter is very hard to obtain, I estimate it
 from the current status of the first 450 patients.
 I assume the order of death is based on the order of confirmation (e.g. patient
@@ -230,3 +243,7 @@ so it might be prone to statistical noise.
 ### Code availability
 
 The code is available [here](https://github.com/mfkasim91/idcovid19) with BSD 3-clause license.
+
+##### Update history
+
+Update 25/03/2020: adding summary and making clear about the number interpretation
