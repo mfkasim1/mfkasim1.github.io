@@ -17,10 +17,12 @@ With the demographic-adjusted case fatality rate, I
 predict the number of cases in every provinces in Indonesia, incorporating the
 onset-to-death delay.
 The highest density of predicted COVID19 cases (as of 26 March 2020) are located
-in Jakarta (by significant amount), DI Yogyakarta, Bali, and Kepulauan Riau.
-The provinces that might have large ratio of predicted and reported cases (illustrating
-the fraction of unreported cases) are (outside Jawa) Bali, Kepulauan Riau,
-(in Jawa) Jawa Tengah, Jawa Barat, and DI Yogyakarta.
+in Jakarta (190 / 100,000 populations), DI Yogyakarta (23 / 100,000 populations),
+Kepulauan Riau (21 / 100,000 populations), and Bali (20 / 100,000 populations).
+The provinces that might have large fraction of unreported cases are
+(outside Jawa) Bali (1.1% detected), Kepulauan Riau (1.1% detected),
+(in Jawa) DI Yogyakarta (1.5% detected), Jawa Tengah (1.6% detected),
+and Jawa Barat (1.7% detected).
 
 ## Data and assumptions
 
