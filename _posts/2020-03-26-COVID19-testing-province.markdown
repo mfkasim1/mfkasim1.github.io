@@ -84,7 +84,7 @@ being detected and allow the number of infected persons grow exponentially.
 By fitting the data from [here](https://www.worldometers.info/coronavirus/country/indonesia/),
 we get the number of cases doubles every 4.2 days.
 So if 15 days before there are 122 persons already infected, it means there might
-already be 1450 persons get infected in total in the day the first mortality
+already be 1450 persons get infected in total on the day the first mortality
 was recorded.
 
 This is the upper estimate if we assume the onset-to-death period is always 15
@@ -101,7 +101,7 @@ n_{case} = \frac{\kappa \tau_d + 1}{\eta_{CFR}} n_{deceased}
 
 where \\(kappa\\) is the exponential factor, \\(\tau\_d\\) is the mean onset-to-death
 period, and \\(eta\_{CFR}\\) is the adjusted CFR for Indonesia.
-Following this equation, it means there might already be **422 cases in the day
+Following this equation, it means there might already be **422 cases on the day
 the first mortality was recorded**.
 I use this number to estimate the number of infectious cases in every province in
 Indonesia, multiplied by the mortality numbers.
