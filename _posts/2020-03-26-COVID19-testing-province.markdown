@@ -1,0 +1,143 @@
+---
+layout: post
+title:  "Which province should the COVID19 testing be focused?"
+comments: true
+date: 2020-03-26 11:56:33 +0000
+published: true
+categories:
+- Probability and statistics
+tags:
+- Bayesian inference
+- COVID19
+---
+
+## Summary
+
+With the delay-adjusted and demographic-adjusted case fatality rate, I
+predict the number of cases in every provinces in Indonesia.
+The highest density of predicted COVID19 cases (as of 26 March 2020) are located
+in Jakarta (by significant amount), DI Yogyakarta, Bali, and Kepulauan Riau.
+The provinces that might have large ratio of predicted and reported cases (illustrating
+the fraction of unreported cases) are (outside Jawa) Bali, Kepulauan Riau,
+(in Jawa) Jawa Tengah, Jawa Barat, and DI Yogyakarta.
+
+## Data and assumptions
+
+#### Data
+
+* The mean incubation period is \\(5.6^{+0.6}\_{-0.6}\\) days \[[ref](https://doi.org/10.3390/jcm9020538)\]
+* The mean onset-to-death period is \\(15^{+2.4}\_{-2.4}\\) days \[[ref](https://doi.org/10.3390/jcm9020538)\]
+* The exponential factor is \\(0.164^{+0.008}\_{-0.008}\\) / days or double every 4.2 days (fitted data from 18-26 March 2020)
+* Adjusted Case-Fatality-Ratio with Indonesian age demographic is about \\(0.82^{+0.63}\_{-0.63}\%\\)
+(age-based CFR from \[[ref](https://doi.org/10.1101/2020.03.09.20033357 )\] and
+demographic data from \[[ref](https://www.bps.go.id/publication/2016/11/30/63daa471092bb2cb7c1fada6/profil-penduduk-indonesia-hasil-supas-2015.html)\])
+
+#### Assumptions
+
+* The death number is measured proportionally in all provinces in Indonesia.
+* The deceased patients are staying in the same province since the infection.
+* The numbers above that are obtained from China's data is applicable for Indonesia.
+
+## Introduction
+
+The high case fatality rate (CFR) in my
+[previous post](https://mfkasim91.github.io/2020/03/24/survival-rate-covid19-indonesia/)
+is most likely because most of the reported cases are severe.
+Milder cases, that are infectious, might be heavily underreported.
+By taking the CFR number from a study using China's data
+\[[ref](https://doi.org/10.1101/2020.03.09.20033357 )\] and adjusting the number
+with Indonesian's age demographic, we can predict how many infectious cases are
+in Indonesia.
+
+In this study, I use the number of death per province to predict the total
+infectious case in Indonesia.
+As it is more likely for the severe cases to be reported than the milder
+(and still infectious) cases,
+the number of deaths should be closer to the actual number than the
+confirmed case.
+
+## Method
+
+Adjusting the Indonesian demographic with the age-based CFR,
+we can get the adjusted CFR for Indonesia is \\(0.82^{+0.63}\_{-0.63}\%\\).
+This means for every 100,000 people that develop the onset of symptoms, there
+might be 820 persons who might die because of COVID19 (or 2 millions over
+267 millions Indonesian people).
+
+Using the CFR number directly to predict the number of infectious case might
+underestimate the number, as there is a delay from a person developing the
+symptoms to death.
+Therefore, to get a more accurate number on the infectious case, we need to take
+into account the onset-to-death delay.
+
+From the reference \[[ref](https://doi.org/10.3390/jcm9020538)\], they found that
+the onset-to-death period is about 15 days.
+Which means if there is one death due to COVID19 in a province, then the person
+has been infected since 15 days before.
+If we assume the CFR in Indonesia is 0.82%, which means that 15 days before
+there are 122 persons that have been infected (including the deceased one).
+
+During those 15 days, those 122 persons are likely to infect the other without
+being detected and allow the number of infected persons grow exponentially.
+By fitting the data from [here](https://www.worldometers.info/coronavirus/country/indonesia/),
+we get the number of cases doubles every 4.2 days.
+So if 15 days before there are 122 persons already infected, it means there might
+already be 1450 persons get infected in total.
+
+This is the upper estimate if we assume the onset-to-death period is always 15
+days.
+In fact, not every onset-to-death period is 15 days.
+We can take an assumption that the onset-to-death is following the positive Laplace
+distribution, as usually used in SEIR model.
+With Laplace distribution with mean \\(\tau_d = 15\ \mathrm{days}\\), the estimated
+case number per death in the same day is given by
+
+$$\begin{equation}
+n_{case} = \frac{\kappa \tau_d + 1}{\eta_{CFR}} n_{deceased}
+\end{equation}$$
+
+where \\(kappa\\) is the exponential factor, \\(\tau\_d\\) is the onset-to-death
+period, and \\(eta\_{CFR}\\) is the adjusted CFR for Indonesia.
+Following this equation, one death in a day is an indication that there might
+already be 422 total infection cases.
+I use this number to estimate the number of infectious cases in every province in
+Indonesia.
+
+## Results
+
+#### Predicted case / populations
+
+Using the data from [BNPB](http://covid19.bnpb.go.id/), we can predict COVID19
+cases per populations.
+Here are the results of the predicted COVID19 cases per 100,000 populations only
+for provinces that has nonzero death cases.
+
+<img title="Predicted COVID19 case / 100,000 populations" src="{{ site.baseurl }}/assets/idcovid19/predicted-case-per-pop.png" width="100%"/>
+
+We can see that **Jakarta** has much higher case density than other provinces.
+The case density in Jakarta is predicted to be 190 cases / 100,000 populations.
+If we remove Jakarta from the graph, we can see other provinces numbers more
+clearly.
+
+<img title="Predicted COVID19 case / 100,000 populations without Jakarta" src="{{ site.baseurl }}/assets/idcovid19/predicted-case-per-pop-wo-jakarta.png" width="100%"/>
+
+The top-3 provinces (outside Jakarta) that have the highest density of predicted cases
+are **DI Yogyakarta, Bali, and Kepulauan Riau**.
+Kepulauan Riau is the only province with less than 2 millions populations which has recorded deaths.
+That makes it the top-3 provinces (outside Jakarta) that have the highest predicted case density.
+
+#### Predicted case / confirmed case
+
+We can also calculate the ratio between the predicted cases and the confirmed cases.
+It can illustrate the severity of undertesting in the corresponding area.
+
+<img title="Predicted COVID19 case / confirmed cases" src="{{ site.baseurl }}/assets/idcovid19/predicted-case-per-conf.png" width="100%"/>
+
+From the plots above, we can see that the number of reported cases in **Bali and
+Kepulauan Riau** might be significantly underreported.
+The predicted unreported fraction for provinces in Jawa is not as bad as those
+two provinces, however, **Jawa Tengah, Jawa Barat, and DI Yogyakarta** is predicted
+to have large portion of undetected cases.
+
+(I have to say that Sulawesi Selatan, where I come from, is performing really well
+in detecting the cases)
