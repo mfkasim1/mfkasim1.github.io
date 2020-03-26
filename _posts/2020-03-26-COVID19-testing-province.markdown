@@ -105,6 +105,8 @@ where \\(\kappa\\) is the exponential factor, \\(\tau\_d\\) is the mean onset-to
 period, and \\(\eta\_{CFR}\\) is the adjusted CFR for Indonesia.
 Following this equation, it means there might already be **422 cases on the day
 the first mortality was recorded**.
+This number is chosen to approximately adjust the CFR in Indonesia that might
+be higher than calculated here (0.82%).
 I use this number to estimate the number of infectious cases in every province in
 Indonesia, multiplied by the mortality numbers.
 
