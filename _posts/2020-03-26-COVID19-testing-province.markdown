@@ -21,8 +21,8 @@ in Jakarta (190 / 100,000 populations), DI Yogyakarta (23 / 100,000 populations)
 Kepulauan Riau (21 / 100,000 populations), and Bali (20 / 100,000 populations).
 The provinces that might have large fraction of unreported cases are
 (outside Jawa) Bali (1.1% detected), Kepulauan Riau (1.1% detected),
-(in Jawa) DI Yogyakarta (1.5% detected), Jawa Tengah (1.6% detected),
-and Jawa Barat (1.7% detected).
+(in Jawa) Jawa Tengah (1.6% detected), Jawa Barat (1.7% detected), and
+DI Yogyakarta (1.9% detected).
 
 ## Data and assumptions
 
