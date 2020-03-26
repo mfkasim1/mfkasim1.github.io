@@ -99,8 +99,8 @@ $$\begin{equation}
 n_{case} = \frac{\kappa \tau_d + 1}{\eta_{CFR}} n_{deceased}
 \end{equation}$$
 
-where \\(kappa\\) is the exponential factor, \\(\tau\_d\\) is the mean onset-to-death
-period, and \\(eta\_{CFR}\\) is the adjusted CFR for Indonesia.
+where \\(\kappa\\) is the exponential factor, \\(\tau\_d\\) is the mean onset-to-death
+period, and \\(\eta\_{CFR}\\) is the adjusted CFR for Indonesia.
 Following this equation, it means there might already be **422 cases on the day
 the first mortality was recorded**.
 I use this number to estimate the number of infectious cases in every province in
