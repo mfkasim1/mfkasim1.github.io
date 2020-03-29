@@ -61,8 +61,8 @@ strategy in Wuhan and all people comply with the rules all the time.
 We can see that the total number of deaths grows exponentially as the lockdown is delayed.
 Let's take an example.
 If the lockdown is implemented on 30 March, the total number of deaths would be around 1600 people.
-If it is implemented a week later (6 April), the total deaths would be about 3100 people.
-Delaying it until for 2 weeks until 13 April would raise the number to 9900 people.
+If it is implemented a week later (6 April), the total deaths would be about 5100 people.
+Delaying it until for 2 weeks until 13 April would raise the number to 16000 people.
 And if it is delayed until a month later, it would result in about 128000 deaths.
 The longer it is delayed, the more people are going to die.
 Remember, delaying the lockdown by 4 days would **double the number of deaths**.
@@ -83,7 +83,7 @@ that obeys the lockdown.
 We can see if the number of people disobey the rule increases, the number of deaths
 **increases very significantly**.
 The effect is much more significant than delaying the lockdown.
-If all people obeys the lockdown's rules, the number of deaths would be 3700 by the end of epidemic.
+If all people obeys the lockdown's rules, the number of deaths would be 1600 by the end of epidemic.
 If 5% of the population does not obey the rules (1 in 20 of your friends/colleagues), the number increases to 6000 deaths.
 With 10% population does not follow the rules (1 in 10), the number of deaths increases significantly to 37000.
 And if 15% of the population does not obey the lockdown's rules, the number sharply increases to 500 thousands deaths.
