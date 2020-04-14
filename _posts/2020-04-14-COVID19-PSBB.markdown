@@ -1,0 +1,71 @@
+---
+layout: post
+title:  "Pembatasan Sosial Berskala Besar, lalu apa?"
+comments: true
+date: 2020-04-14 11:20:19 +0000
+published: true
+categories:
+- Simulation
+tags:
+- COVID19
+---
+
+## Ringkasan
+
+* Efektivitas PSBB baru dapat terlihat 2-3 minggu setelah diterapkan, apabila angka kasus positif baru per hari tidak turun setelah 2-3 minggu, PSBB sebaiknya lebih diperketat.
+* Apabila angka kasus positif baru dan kematian per hari turun, PSBB sebaiknya tetap dijalankan sampai tidak ada kasus transmisi lokal, yang mungkin memerlukan waktu berbulan-bulan.
+* Setelah PSBB berhasil dan kasus transmisi lokal sudah tidak ada, masih ada kemungkinan terjadinya gelombang kedua. **Tes massal dan penelusuran kontak sebaiknya tetap dilakukan secara agresif** untuk memperlambat penyebaran gelombang kedua.
+
+## Latar belakang
+
+Pada tanggal 10 April yang lalu Pembatasan Sosial Berskala Besar (PSBB) telah ditetapkan di DKI Jakarta untuk menangani pandemi COVID-19 ini. Beberapa daerah lain pun mulai menyusul menerapkan PSBB, seperti kota-kota di Jawa Barat.
+
+Dengan diterapkannya PSBB, banyak pro dan kontra mengenai penetapan PSBB ini. Apakah himbauan *social distancing* dan *physical distancing* seperti bulan lalu tidak cukup sehingga PSBB benar-benar perlu dilakukan? Bagaimana dan kapan kita akan tahu PSBB tersebut sukses atau tidak? Sampai kapankah PSBB akan berlangsung dan apakah yang akan terjadi setelah PSBB? Di tulisan ini, saya akan coba menjelaskan bagaimana menjawab pertanyaan-pertanyaan tersebut tanpa menggunakan model yang canggih dan kompleks.
+
+## Angka reproduksi
+
+Tanpa intervensi apapun, satu orang dengan penyakit COVID-19 ini dapat menularkan ke sekitar 3 orang lainnya. Ini yang disebut dengan angka reproduksi yang nilainya sekitar 3. Angka reproduksi dari suatu penyakit ini yang menentukan apakah penyakit tersebut akan menjadi epidemi atau akan hilang dari masyarakat.
+
+Misalnya ada 100 orang yang terjangkit suatu penyakit dengan angka reproduksi yang kurang dari 1, misalnya 0,9. Setelah 100 orang tersebut sembuh, mereka telah menularkan ke 90 orang lainnya. Kemudian setelah 90 orang tersebut sembuh, mereka telah menularkan ke 81 orang lainnya. Setelah 40 tahapan, jumlah kasus berkurang menjadi 1 pasien dan tidak lama kemudian akan hilang dari masyarakat.
+
+Ceritanya akan jauh berbeda apabila angka reproduksi lebih dari 1. Misalnya dengan 100 kasus aktif dan angka reproduksi 1,1 (lebih dari 1), 100 orang tersebut menulari 110 orang lainnya. Kemudian 110 orang tersebut menularkan ke 121 orang, dan seterusnya. Setelah 40 tahapan, jumlah kasus akan menjadi 4500, dan akan terus bertambah sehingga menjadi epidemi.
+
+<img title="Ilustrasi penyebaran penyakit" src="{{ site.baseurl }}/assets/idcovid19/r-illustration.png" width="100%"/>
+*Gambar 1. Ilustrasi penyebaran penyakit dengan angka reproduksi yang berbeda. Angka reproduksi yang lebih dari 1 menyebabkan epidemi, sedangkan angka reproduksi yang kurang dari 1 dapat membuat penyakit hilang dari masyarakat.*
+
+Perbedaan skenario-skenario di ataslah yang penting untuk dipahami. Apabila 10 orang menularkan ke 11 orang lainnya (angka reproduksi lebih dari 1), penyakit akan terus meluas. Penyakit baru akan berhenti menyebar apabila sebagian besar penduduk telah terinfeksi dan dapat menyebabkan jutaan kematian. Jika 10 orang tersebut hanya menularkan ke 9 orang lainnya (angka reproduksi kurang dari 1), maka penyakit akan hilang dan jutaan nyawa dapat diselamatkan. Bisa dilihat bahwa **perbedaan yang kecil ini dapat menghasilkan skenario yang sangat berbeda**.
+
+## Mitigasi dan supresi
+
+Angka reproduksi inilah yang berusaha diturunkan dengan intervensi pemerintah. Angka reproduksi dapat diturunkan dengan mengurangi interaksi masyarakat (seperti *social distancing* dan *physical distancing*) dan tes massal serta isolasi pasien dengan COVID-19. Besarnya intervensi pemerintah bergantung pada target angka reproduksi yang ingin dicapai. Secara garis besar, terdapat 2 jenis intervensi pemerintah: mitigasi dan supresi.
+
+Strategi **mitigasi** dilaksanakan untuk memperlambat penyebaran penyakit dan mengurangi angka reproduksi, tapi tetap lebih dari 1. Tujuan dari strategi ini adalah untuk melandaikan kurva (*flatten the curve*) sehingga fasilitas kesehatan dapat menampung pasien yang membutuhkan. Akan tetapi, apabila angka reproduksi lebih dari 1, maka penyakit akan terus menyebar di masyarakat, seperti yang digambarkan di bagian sebelumnya. Penyakit baru akan hilang dari masyarakat apabila sebagian besar penduduk telah terinfeksi dan telah terbangun imunitas kelompok (*herd immunity*). Resiko dari strategi ini adalah **tingginya angka kematian** dan **waktu intervensi yang bisa sampai 1 tahun atau lebih**. Dengan *case-fatality-rate* sekitar 1% dan 267 juta penduduk Indonesia, strategi mitigasi ini dapat menyebabkan jutaan penduduk Indonesia meninggal karena COVID-19.
+
+Strategi **supresi**, di lain pihak, berusaha menekan angka reproduksi agar kurang dari 1 sehingga penyakit akan hilang dari masyarakat. Strategi supresi secara umum memerlukan intervensi pemerintah yang lebih besar dibandingkan strategi mitigasi. Keuntungan utama dari strategi supresi ini adalah jumlah kematian dapat dikurangi secara drastis karena hanya sebagian kecil masyarakat yang terinfeksi. Akan tetapi, karena hanya sebagian kecil masyarakat yang terinfeksi, imunitas kelompok tidak terbentuk sehingga **ada kemungkinan terjadinya gelombang kedua, ketiga, dan seterusnya**.
+
+<img title="Simulasi mitigasi dan supresi" src="{{ site.baseurl }}/assets/idcovid19/simulasi-mitigasi-supresi.png" width="100%"/>
+*Gambar 2. Perbandingan jumlah kasus aktif untuk berbagai macam strategi intervensi pemerintah. Strategi mitigasi menyebabkan jumlah kasus yang jauh lebih banyak dan durasi pembatasan sosial yang lebih panjang. Sedangkan strategi supresi dapat menekan jumlah kasus secara signifikan dan memerlukan pembatasan sosial yang lebih ketat dengan durasi yang relatif lebih singkat.*
+
+Pemerintah Indonesia telah mengeluarkan himbauan *social distancing* dan *physical distancing* sejak sebulan yang lalu dari pertengahan Maret. Apakah ini termasuk strategi mitigasi atau supresi? Kita bisa lihat dari data jumlah kasus baru per hari dan jumlah kematian baru per hari. Setelah sebulan himbauan tersebut, jumlah kasus per hari dan kematian per hari belum menunjukkan penurunan. Artinya, himbauan *social distancing* dan *physical distancing* belum membuat angka reproduksi di bawah 1. Apabila kehidupan sehari-hari di Indonesia terus dilanjutkan hanya dengan himbauan tersebut, kondisi yang sama dapat terus berlangsung **hingga setahun lebih** dan COVID-19 akan terus menyebar serta dapat menyebabkan **jutaan kematian** di akhir epidemi. Oleh karena itu, pemerintah menetapkan intervensi yang lebih besar dalam bentuk pembatasan sosial berskala besar atau PSBB.
+
+<img title="Jumlah kematian per hari di Indonesia" src="{{ site.baseurl }}/assets/idcovid19/death-indonesia-14-april.png" width="100%"/>
+*Gambar 3. Jumlah kematian per hari yang belum menunjukkan penurunan meskipun himbauan* social distancing *telah dikeluarkan 1 bulan yang lalu.*
+
+## Pembatasan Sosial Berskala Besar (PSBB)
+
+Lantas, apakah PSBB termasuk strategi mitigasi atau supresi? Berdasarkan surat keputusan menteri kesehatan, tujuan PSBB adalah untuk "menekan penyebaran COVID-19 semakin meluas", bukan memperlambat. Jadi bisa diasumsikan kalau PSBB mengarah ke strategi supresi. Berdasarkan data dari China, Italia, dan Spanyol, kesuksesan strategi supresi dapat terlihat 2-3 minggu setelah penerapan strategi dengan melihat apakah angka kasus baru per hari berkurang.
+
+<img title="Jumlah kematian per hari di Indonesia" src="{{ site.baseurl }}/assets/idcovid19/death-italy-14-april.png" width="100%"/>
+*Gambar 4. Gambaran efek strategi supresi di Italia. Penurunan baru terlihat 3 minggu setelah lockdown.*
+
+Apabila setelah 2-3 minggu angka kasus baru per hari tetap meningkat, walaupun grafiknya melandai, artinya angka reproduksi tetap lebih dari 1 dan **PSBB sebaiknya lebih diperketat**. Jika dibiarkan dan PSBB tidak diperketat, maka COVID-19 akan tetap meluas hingga menginfeksi sebagian besar penduduk dan tetap dapat menyebabkan jutaan kematian.
+
+Bagaimana kalau angka kasus baru per hari menurun 2-3 minggu setelah PSBB? Apakah PSBB dapat dibuka? Sebaiknya tidak. Membuka PSBB terlalu cepat hanya akan membuat COVID-19 menyebar lagi dan dapat memaksa pemerintah untuk memberlakukan PSBB lagi di kemudian hari. Apabila keadaan sosial-ekonomi memungkinkan, PSBB sebaiknya dilanjutkan hingga kasus transmisi lokal menjadi sangat kecil sehingga semuanya dapat dideteksi dan dikontrol oleh petugas kesehatan.
+
+Penurunan kasus transmisi lokal ini dapat berlangsung hingga berbulan-bulan, bergantung pada kedisiplinan masyarakat. Kedisiplinan masyarakat yang tinggi dapat mempercepat penurunan kasus transmisi lokal dan PSBB tidak perlu berlangsung lama. Akan tetapi, apabila kedisiplinan masyarakat rendah, PSBB dapat berlangsung cukup lama dan bahkan bisa gagal menekan penyebaran COVID-19.
+
+## Gelombang kedua setelah PSBB
+
+Apabila setelah berbulan-bulan PSBB sukses menurunkan kasus transmisi lokal menjadi sangat kecil dan aktifitas ekonomi dapat berjalan lagi, perjuangan belum berakhir. Strategi PSBB termasuk strategi supresi yang artinya menekan penyebaran agar hanya sebagian kecil penduduk yang terinfeksi. Karena hanya sebagian kecil yang terinfeksi, sistem imunitas tubuh untuk COVID-19 di sebagian besar penduduk lainnya belum terbentuk sehingga masih rentan terhadap COVID-19. Sehingga apabila COVID-19 muncul lagi, misalnya dibawa dari negara/wilayah lain, COVID-19 dapat menyebar lagi dan menyebabkan gelombang kedua. Gelombang kedua ini yang telah terjadi di beberapa kota di China dan Jepang.
+
+Kemungkinan terjadinya gelombang kedua setelah gelombang pertama tidak sepenuhnya merupakan kabar buruk. Pada gelombang kedua diharapkan kita sudah belajar dari pengalaman menghadapi gelombang pertama sehingga dapat menyiapkan strategi yang lebih baik dalam menghadapi gelombang kedua. Penanganan gelombang pertama ini juga berperan sebagai penundaan waktu agar lebih banyak hal yang diketahui mengenai COVID-19 sehingga strategi menghadapi gelombang kedua dapat disiapkan dengan lebih baik, salah satunya dengan tes massal dan penelusuran kontak (*contact tracing*) dengan agresif.
