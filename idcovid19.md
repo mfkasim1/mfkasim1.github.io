@@ -7,6 +7,8 @@ permalink: /idcovid19/
 
 ### Apakah kurva telah melandai?
 
+Sumber data: KawalCOVID19
+
 **Indonesia**
 
 Hasil: belum dapat disimpulkan
