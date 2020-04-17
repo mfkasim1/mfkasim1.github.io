@@ -5,9 +5,9 @@ title:
 permalink: /idcovid19/
 ---
 
-## Apakah kurva telah melandai?
+## Apakah kurva penyebaran telah turun?
 
-Sumber data: KawalCOVID19
+Sumber data: [KawalCOVID19](https://kawalcovid19.id/)
 
 #### Indonesia
 
