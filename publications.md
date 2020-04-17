@@ -1,5 +1,6 @@
 ---
 layout: page
+short_title: Publications
 title: Publications
 permalink: /publications/
 ---
