@@ -15,27 +15,26 @@ Hasil: belum dapat disimpulkan
 
 <img title="Indonesia" src="{{ site.baseurl }}/assets/idcovid19-daily/id_new_cases.png" width="100%"/>
 
-
-**DKI Jakarta**
-
-Hasil: belum dapat disimpulkan
-
-<img title="Indonesia" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jakarta_new_cases.png" width="100%"/>
-
-**Jawa Barat**
+**Jakarta**
 
 Hasil: belum dapat disimpulkan
 
-<img title="Indonesia" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jabar_new_cases.png" width="100%"/>
+<img title="Jakarta" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jakarta_new_cases.png" width="100%"/>
 
-**Jawa Timur**
-
-Hasil: belum dapat disimpulkan
-
-<img title="Indonesia" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jatim_new_cases.png" width="100%"/>
-
-**Sulawesi Selatan**
+**Jabar**
 
 Hasil: belum dapat disimpulkan
 
-<img title="Indonesia" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_sulsel_new_cases.png" width="100%"/>
+<img title="Jabar" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jabar_new_cases.png" width="100%"/>
+
+**Jatim**
+
+Hasil: belum dapat disimpulkan
+
+<img title="Jatim" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jatim_new_cases.png" width="100%"/>
+
+**Sulsel**
+
+Hasil: belum dapat disimpulkan
+
+<img title="Sulsel" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_sulsel_new_cases.png" width="100%"/>
