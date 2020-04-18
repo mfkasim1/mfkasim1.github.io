@@ -8,7 +8,7 @@ permalink: /idcovid19/
 ## Apakah kurva penyebaran telah turun?
 
 Sumber data: [KawalCOVID19](https://kawalcovid19.id/)<br/>
-Diperbarui pada: 17/04/2020
+Diperbarui pada: 18/04/2020
 
 #### Indonesia
 
