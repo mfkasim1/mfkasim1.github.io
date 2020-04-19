@@ -8,7 +8,7 @@ permalink: /idcovid19/
 ## Apakah kurva penyebaran telah turun?
 
 Sumber data: [KawalCOVID19](https://kawalcovid19.id/)<br/>
-Diperbarui pada: 18/04/2020<br/>
+Diperbarui pada: 19/04/2020<br/>
 Metode dapat dilihat di [sini]({{ site.baseurl }}/2020/04/17/COVID19-has-the-curve-flatten/)
 
 #### Indonesia
