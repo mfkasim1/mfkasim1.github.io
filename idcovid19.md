@@ -1,6 +1,6 @@
 ---
 layout: page
-short_title: COVID-19 (ID)
+short_title:
 title:
 permalink: /idcovid19/
 ---
