@@ -7,10 +7,14 @@ permalink: /publications/
 
 [Google scholar profile](https://scholar.google.co.uk/citations?user=WmeftKUAAAAJ&hl=en)
 
+### News about my work
+
+* "*From models of galaxies to atoms, simple AI shortcuts speed up simulations by billions of times*", [Science Magazine](https://dx.doi.org/10.1126/science.abb2769), 2020.
+
 ### Selected publications
 
 #### Peer-reviewed journals
-* **M. F. Kasim**, T. P. Galligan, J. Topp-Mugglestone, G. Gregori, S. M. Vinko, *Inverse Problem Instabilities in Large-Scale Plasma Modelling*, [arXiv:1805.08301](https://arxiv.org/pdf/1805.08301.pdf), 2018.
+* **M. F. Kasim**, T. P. Galligan, J. Topp-Mugglestone, G. Gregori, S. M. Vinko, *Inverse Problem Instabilities in Large-Scale Plasma Modelling*, [Phys. Plasmas](https://doi.org/10.1063/1.5125979), 2019, and [arXiv:1805.08301](https://arxiv.org/pdf/1805.08301.pdf), 2018.
 * **M. F. Kasim**, J. S. Wark, S. M. Vinko, *Validating Continuum Lowering Models via Multi-Wavelength Measurements of Integrated X-ray Emission*, [Sci. Rep. 8 (1), 6276](https://doi.org/10.1038/s41598-018-24410-2), 2018.
 * **M. F. Kasim**, L. Ceurvorst, N. Ratan, J. Sadler, A. Savert, *et al.*, *Quantitative shadowgraphy and proton radiography for large intensity modulations*, [Phys. Rev. E **95**, 023306](https://doi.org/10.1103/PhysRevE.95.023306) &  [arXiv:1607.04179](https://arxiv.org/pdf/1607.04179.pdf), 2016.
 * N. F. Y. Chen, **M. F. Kasim**, L. Ceurvorst, N. Ratan, J. Sadler, *et al.*, *Machine learning applied to proton radiography*, [Phys. Rev. E **95**, 043305](https://doi.org/10.1103/PhysRevE.95.043305) & [arXiv:1608.05582](https://arxiv.org/pdf/1608.05582.pdf), 2016.
