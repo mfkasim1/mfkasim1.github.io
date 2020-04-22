@@ -28,6 +28,10 @@ permalink: /publications/
 
 ### Invited talks
 
+* *Accelerating scientific simulations with deep emulator network search*,
+Perth Machine Learning Group, 9 April 2020.
+* *Accelerating scientific simulations with deep emulator network search*,
+Michaelmas FoaLab talks, 8 November 2019.
 * *Compressed sensing and machine learning in medical physics*, weekly seminar
 at Universitas Indonesia, 11 January 2019.
 * *Optimal transport in proton radiography and shadowgraphy*, Plasma Physics
