@@ -39,6 +39,13 @@ Hasil: belum dapat disimpulkan
 
 <img title="Jatim" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jatim_new_cases.png" width="100%"/>
 
+#### Jateng
+
+Probabilitas menurun: \\(11\%\\)<br/>
+Hasil: belum dapat disimpulkan
+
+<img title="Jateng" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jateng_new_cases.png" width="100%"/>
+
 #### Sulsel
 
 Probabilitas menurun: \\(38\%\\)<br/>
