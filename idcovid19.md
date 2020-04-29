@@ -48,7 +48,7 @@ Hasil: belum dapat disimpulkan
 
 #### Sulsel
 
-Probabilitas menurun: \\(61\%\\)<br/>
-Hasil: ada indikasi penurunan, tapi belum dapat dipastikan
+Probabilitas menurun: \\(36\%\\)<br/>
+Hasil: kurva terlihat turun, tapi jumlah tes juga menurun
 
 <img title="Sulsel" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_sulsel_new_cases.png" width="100%"/>
