@@ -15,7 +15,7 @@ Metode dapat dilihat di [sini]({{ site.baseurl }}/2020/04/17/COVID19-has-the-cur
 
 Probabilitas menurun: \\(48\%\\)<br/>
 Hasil: belum dapat disimpulkan<br/>
-Estimasi jumlah kasus: 63.000 (95% CI: 30.000 - 150.000)
+Estimasi jumlah kasus: 610.000 (95% CI: 210.000 - 1.200.000)
 
 <img title="Indonesia" src="{{ site.baseurl }}/assets/idcovid19-daily/id_new_cases.png" width="100%"/>
 
@@ -23,7 +23,7 @@ Estimasi jumlah kasus: 63.000 (95% CI: 30.000 - 150.000)
 
 Probabilitas menurun: \\(58\%\\)<br/>
 Hasil: ada indikasi penurunan, tapi belum dapat dipastikan<br/>
-Estimasi jumlah kasus: 27.000 (95% CI: 12.000 - 62.000)
+Estimasi jumlah kasus: 220.000 (95% CI: 110.000 - 490.000)
 
 <img title="Jakarta" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jakarta_new_cases.png" width="100%"/>
 
@@ -31,7 +31,7 @@ Estimasi jumlah kasus: 27.000 (95% CI: 12.000 - 62.000)
 
 Probabilitas menurun: \\(34\%\\)<br/>
 Hasil: belum dapat disimpulkan<br/>
-Estimasi jumlah kasus: 6.500 (95% CI: 3.100 - 16.000)
+Estimasi jumlah kasus: 48.000 (95% CI: 25.000 - 120.000)
 
 <img title="Jabar" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jabar_new_cases.png" width="100%"/>
 
@@ -39,7 +39,7 @@ Estimasi jumlah kasus: 6.500 (95% CI: 3.100 - 16.000)
 
 Probabilitas menurun: \\(41\%\\)<br/>
 Hasil: belum dapat disimpulkan<br/>
-Estimasi jumlah kasus: 11.000 (95% CI: 5.300 - 28.000)
+Estimasi jumlah kasus: 99.000 (95% CI: 41.000 - 230.000)
 
 <img title="Jatim" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jatim_new_cases.png" width="100%"/>
 
@@ -47,7 +47,7 @@ Estimasi jumlah kasus: 11.000 (95% CI: 5.300 - 28.000)
 
 Probabilitas menurun: \\(51\%\\)<br/>
 Hasil: ada indikasi penurunan, tapi belum dapat dipastikan<br/>
-Estimasi jumlah kasus: 5.500 (95% CI: 2.700 - 13.000)
+Estimasi jumlah kasus: 40.000 (95% CI: 20.000 - 110.000)
 
 <img title="Jateng" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_jateng_new_cases.png" width="100%"/>
 
@@ -55,6 +55,6 @@ Estimasi jumlah kasus: 5.500 (95% CI: 2.700 - 13.000)
 
 Probabilitas menurun: \\(35\%\\)<br/>
 Hasil: belum dapat disimpulkan<br/>
-Estimasi jumlah kasus: 3.500 (95% CI: 1.900 - 8.900)
+Estimasi jumlah kasus: 32.000 (95% CI: 15.000 - 73.000)
 
 <img title="Sulsel" src="{{ site.baseurl }}/assets/idcovid19-daily/idprov_sulsel_new_cases.png" width="100%"/>
