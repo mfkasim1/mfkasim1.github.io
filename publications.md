@@ -30,7 +30,7 @@ permalink: /publications/
 
 * *Building high fidelity emulators with deep emulator network search*,
 ClimateChange.ai workshop at International Conference on Learning Representation
-(ICLR), 29 April 2020. ([presentation]({{ site.baseurl }}/assets/talks/200429-DENSE.pdf))
+(ICLR), 29 April 2020. ([presentation]({{ site.baseurl }}/assets/talks/200429-DENSE.pdf), [recording](https://www.youtube.com/watch?v=hYSvN_mRHm0&t=26m23s))
 * *Accelerating scientific simulations with deep emulator network search*,
 Perth Machine Learning Group, 9 April 2020.
 * *Accelerating scientific simulations with deep emulator network search*,
