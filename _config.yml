@@ -19,7 +19,7 @@ description: > # this means to ignore newlines until "baseurl:"
   A physicist that loves to explore things, especially machine learning and AI
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  mfkasim91
+github_username:  mfkasim1
 future: false
 permalink: /:year/:month/:day/:title/
 
