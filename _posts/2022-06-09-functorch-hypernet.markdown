@@ -47,7 +47,7 @@ A very nice talk about HyperNetwork and its applications can be watched [here](h
 <img title="Hypernetwork illustration" src="{{ site.baseurl }}/assets/220609-hypernetworks/hypernetwork.png" width="300"/>
 </p>
 
-#### Implementating HyperNetwork in functorch
+#### Implementing HyperNetwork in functorch
 
 The difficulty in implementing hypernetwork arise when the input to the hypernetwork (i.e. \\(x\\) in the picture above)
 is batched.
