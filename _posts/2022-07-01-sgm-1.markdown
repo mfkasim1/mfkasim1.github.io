@@ -13,16 +13,19 @@ tags:
 - Neural network
 ---
 
+This is 2 part tutorials where the second part can be found [here]({{ site.baseurl }}/2022/07/04/sgm-2/).
+The jupyter notebooks for this tutorial can be found [here](https://github.com/mfkasim1/score-based-tutorial).
+
 #### Generative model
 
 If you've had too much time on the internet lately, you probably have seen the text-to-image generators such as DALL-E 2,
 Imagen, or CogView2.
-One of the key building blocks of those systems are generative model.
+One of the key building blocks of those systems is the generative model.
 Generative model is the part responsible to generate images that looks as realistic as possible.
 
 How does a generative model works?
 The generative model is trained with a set of real data (or image) as its training dataset.
-Statistically speaking, the training dataset can be seen as data sampled from an unknown distribution.
+Statistically speaking, the training dataset can be seen as data sampled from an unknown probability distribution.
 During the training, this distribution is to be unveiled and if the training is successful, the generative model
 can sample new data from this distribution.
 
@@ -34,19 +37,25 @@ stochastic differential equations, based on [this paper](https://arxiv.org/pdf/2
 #### Score-based generative model (without SDE)
 
 Before continue reading this post, I highly recommend reading the great blog post about score-based generative model
-by Yang Song [here](https://yang-song.github.io/blog/2021/score/).
+by Yang Song [here](https://yang-song.github.io/blog/2021/score/) to understand the basic of score-based generative model.
 
-Let's denote the real data (e.g. images, videos) as \\(\mathbf{x}\\) as a vector of \\(n\\) elements.
-For example, if we are working with MNIST images i.e. grey-scale image (1 channel) with 28-by-28 pixels, \\(n=28\times 28=784\\).
+Let's denote the real data (e.g. images, videos) as \\(\mathbf{x}\in\mathbb{R}^n\\) as a vector of \\(n\\) elements.
+For example, if we are working with MNIST images i.e. grey-scale image (1 channel) with 28-by-28 pixels, the value of \\(n\\) would be \\(n=1\times 28\times 28=784\\).
+The training data, \\(\mathbf{x}_{1..N}\\), is assumed to be drawn from an unknown probability distribution function, \\(p(\mathbf{x})\\),
+i.e. \\(\mathbf{x}\sim p(\mathbf{x})\\).
+
 What we want to learn in score-based generative model is the score function (i.e. gradients of log probability density function),
-\\(\nabla_\mathbf{x} \mathrm{log}\ p(\mathbf{x})\\), given samples of the real data, \\(\mathbf{x}_{1..N}\\).
-By learning the score function, we can sample from the distribution using sampling algorithms, such as Hamiltonian Monte Carlo.
-If you're curious why learn the score function (i.e. the gradient) instead of the log probability density function directly,
-you can find the answer in Yang Song's [blog post](https://yang-song.github.io/blog/2021/score/).
+\\(\nabla_\mathbf{x} \mathrm{log}\ p(\mathbf{x})\\), given samples of the training data, \\(\mathbf{x}_{1..N}\\).
+By learning the score function, we can sample from the distribution using sampling algorithms, such as Langevin MCMC.
+Learning the score function does not have any constraint as opposed to learning the probability density function where we have
+to make sure the total integral is 1.
+Having the total integral constraint removed in score-based generative model, we get more freedom in choosing the architecture
+of the neural network.
 
 The learned score function \\(\mathbf{s}(\mathbf{x};\theta)\\) can be represented by a neural network that takes the data \\(\mathbf{x}\\) as the input
 and produces an output with the same size as its input.
-The neural network's parameters, \\(\theta\\), can be learned by minimizing the loss function,
+The neural network's parameters, \\(\theta\\), can be learned by minimizing the loss function with respect to the true score function
+\\(\nabla_\mathbf{x} \mathrm{log}\ p(\mathbf{x})\\),
 
 $$\begin{equation}
 \mathcal{L}(\theta) = \mathbb{E}_{\mathbf{x}\sim p(\mathbf{x})}\left[\left\lVert \mathbf{s}(\mathbf{x};\theta) - \nabla_\mathbf{x} \mathrm{log}\ p(\mathbf{x}) \right\rVert^2\right],
@@ -63,9 +72,9 @@ $$\begin{equation}
 \end{equation}$$
 
 In the equation above, only the first and second terms need to be computed during the training.
-The term \\(g(\mathbf{x})\\) does not depend on the neural network parameters, \\(\theta\\), so it does not matter in the training.
-The first term is simply half of the vector norm of the score function.
-The second term, \\(\mathrm{tr}\left(\nabla\_\mathbf{x} \mathbf{s}(\mathbf{x}; \theta)\right)\\), is the trace (i.e. sum of the diagonal)
+The term \\(g(\mathbf{x})\\) does not depend on the neural network parameters, \\(\theta\\), so it does not matter in the optimization of \\(\theta\\).
+The first term is simply half of the vector norm of the score function while
+the second term, \\(\mathrm{tr}\left(\nabla\_\mathbf{x} \mathbf{s}(\mathbf{x}; \theta)\right)\\), is the trace (i.e. sum of the diagonal)
 of the Jacobian matrix \\(\nabla\_\mathbf{x} \mathbf{s}(\mathbf{x}; \theta)\\).
 
 #### Implementation
@@ -85,7 +94,7 @@ dset = torch.utils.data.TensorDataset(xtns)
 
 Now let's define the neural network that will learn the score function.
 This is just a simple multi-layer perceptron with LogSigmoid activation function.
-I used logsigmoid because of personal preference, you can also use ReLU.
+I used LogSigmoid because of personal preference, you can also use ReLU.
 
 ```python
 # score_network takes input of 2 dimension and returns the output of the same size
@@ -106,7 +115,7 @@ $$\begin{equation}
 \mathcal{L}(\theta) = \mathbb{E}_{\mathbf{x}\sim p(\mathbf{x})}\left[\frac{1}{2} \left\lVert\mathbf{s}(\mathbf{x};\theta)\right\rVert^2 + \mathrm{tr}\left(\nabla_\mathbf{x} \mathbf{s}(\mathbf{x}; \theta)\right) + g(\mathbf{x})\right].
 \end{equation}$$
 
-Note that to implement the Jacobian, I am using the functions from ``functorch``.
+Note that to implement the Jacobian, we can use the functions from ``functorch``.
 
 ```python
 from functorch import jacrev, vmap
@@ -120,11 +129,11 @@ def calc_loss(score_network: torch.nn.Module, x: torch.Tensor) -> torch.Tensor:
     
     # second term: trace of the Jacobian
     jac = vmap(jacrev(score_network))(x)  # (batch_size, 2, 2)
-    term2 = torch.einsum("bii->b", jac)
+    term2 = torch.einsum("bii->b", jac)  # compute the trace
     return (term1 + term2).mean()
 ```
 
-Everything is ready, now we can start the training. (In my computer, it will take about 10-15 minutes to finish.)
+Everything is ready, now we can start the training. In my computer, it takes about 10-15 minutes to finish.
 
 ```python
 # start the training loop
@@ -160,14 +169,18 @@ def generate_samples(score_net: torch.nn.Module, nsamples: int, eps: float = 0.0
 samples = generate_samples(score_network, 1000).detach()
 ```
 
-And here are the samples:
+The sampling process above more or less looks like below:
 
-<img title="Swiss-roll dataset (learned)" src="{{ site.baseurl }}/assets/220701-sgm/resampled-swiss-dataset.png" width="60%"/>
+<img title="Swiss-roll dataset (learned) sampling animation" src="{{ site.baseurl }}/assets/220701-sgm/sampling.gif" width="60%"/>
+
+And here are the samples from our trained model on the left, compared to the training samples on the right:
+
+<img title="Swiss-roll dataset (learned)" src="{{ site.baseurl }}/assets/220701-sgm/resampled-swiss-dataset.png" width="49%"/>
+<img title="Swiss-roll dataset" src="{{ site.baseurl }}/assets/220701-sgm/swiss-dataset.png" width="49%"/>
 
 As we can see, the generative model can draw new samples from the swiss dataset without knowing the distribution explicitly.
-In this part we don't use the SDE (Stochastic Differential Equations) yet because we're only working with small number of parameters (i.e. \\(n=2\\)).
-However, for large number of parameters (e.g. images, waveforms), we need to use the SDE to produce good results.
-In the next tutorial, we will go through the score-based generative model with SDE.
+However, there are several discrepancies, like our generative model generates more samples on the bottom left than it should be.
+In the [next tutorial]({{ site.baseurl }}/2022/07/04/sgm-2/), we will go through how to improve the sampling quality by using stochastic differential equations (SDE).
 
 #### Summary
 
@@ -178,3 +191,4 @@ Summary for this part:
 * Samples generation: \\(\mathbf{x}_{i + 1} = \mathbf{x}\_i + \varepsilon \mathbf{s}(\mathbf{x}; \theta) + \sqrt{2\varepsilon} \mathbf{z}\_i\\) for \\(i=\\{0, ..., N\\}.\\) with \\(\mathbf{z}\_i\sim \mathcal{N}(\mathbf{0}, \mathbf{I})\\) and some small value of \\(\varepsilon\\) and reasonable value of \\(\mathbf{x}\_0\\).
 
 The jupyter notebook for this tutorial can be found [here](https://github.com/mfkasim1/score-based-tutorial).
+Continue to the [2nd part]({{ site.baseurl }}/2022/07/04/sgm-2/).
