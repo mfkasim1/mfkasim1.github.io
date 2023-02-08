@@ -35,10 +35,13 @@ def complex_div(a, b):
     return (a.real * b.real + a.imag * b.imag) / denom + 1j * (a.imag * b.real - a.real * b.imag) / denom
 ```
 
-Pretty straightforward, right? Now, with the implementation above, try put `a` and `b` to be `1e-170 + 1e-170j`,
+Pretty straightforward, right?
+Now, with the implementation above, try putting `a` and `b` as `1e-170 + 1e-170j`,
 you'll find python complaining about division by zero.
 What happens?
 
+With this simple operation, anyone would expect as long as the operands and the results are within the range
+of numbers that can be represented by computers, it should produce the correct results.
 The numbers `1e-170 + 1e-170j` can still be represented by 64-bits floating point numbers. The result
 (which is supposed to be `1.0`) is also well within the range 64-bits float can represent.
 However, in the intermediary of our calculation of `complex_div` above, we computed the square of `b.real` and
@@ -70,38 +73,45 @@ and [here](https://github.com/pytorch/pytorch/pull/93277) with some very support
 
 There are several challenges in implementing the complex division operations to solve the underflow/overflow problem.
 The first is, obviously, we have to find a mathematical expression that avoids the underflow/overflow in the intermediate calculations.
-As pytorch is optimized for several devices, we also need to implement the solution in multiple ways. This is the second challenge.
+As pytorch is optimized for several devices, we also need to implement the solution in multiple ways to fit those devices.
+This is the second challenge.
 Also, as complex division is relatively common operations, we cannot make the new implementation to be much slower than the naive
 implementation.
 
 The CPU and GPU implementation can follow numpy's implementation.
 Basically, it rewrites the complex division to be
+
 $$\begin{equation}
 \frac{a}{b} = \begin{cases}
 \frac{a_r + a_i (b_i / b_r)}{b_r + b_i (b_i / b_r)} + i \frac{a_i - a_r (b_i / b_r)}{b_r + b_i (b_i / b_r)}\ &\mathrm{if\ }|b_r| > |b_i| \\
 \frac{a_r (b_r / b_i) + a_i}{b_r (b_r / b_i) + b_i} + i \frac{a_i (b_r / b_i) - a_r}{b_r (b_r / b_i) + b_i}\ &\mathrm{if\ }|b_r| \leq |b_i|.
 \end{cases}
 \end{equation}$$
+
 By computing \\((b_r / b_i)\\) or \\((b_i / b_r)\\) beforehand, we can avoid the underflow or overflow problem in the denominator.
 
 The solution above works with CPU or GPU kernel.
-However, as modern CPUs typically offer SIMD (single instruction, multi data), we also need to implement the solution with SIMD instructions.
+However, as modern CPUs typically offer SIMD (single instruction multiple data), we also need to implement the solution with SIMD instructions.
 The problem is the solution above has 2 conditions and if we want to implement conditionals in SIMD, the computer has to compute both equations
-first and then select which one to use.
+and then select which one to use.
 This is going to give a performance penalty as it is going to waste 50% of its computational results.
 My initial thought was to compute it like below,
+
 $$\begin{equation}
 \frac{a}{b} = \frac{a_r}{|b|} \frac{b_r}{|b|} + \frac{a_i}{|b|} \frac{b_i}{|b|} + i \left(\frac{a_i}{|b|} \frac{b_r}{|b|} - \frac{a_r}{|b|} \frac{b_i}{|b|}\right),
 \end{equation}$$
-where \\(|b| = \sqrt{b_r^2 + b_i^2}\\).
-However, this solution requires a square-root computation which was deemed to be too expensive for common operators such as division.
 
-An elegant solution was proposed by @peterbell10, which writes the equation to be
+where \\(|b| = \sqrt{b_r^2 + b_i^2}\\).
+However, this solution requires a square-root computation which was deemed to be too expensive for common operations such as division.
+
+An elegant solution was proposed by @peterbell10, which rewrites the equation to be
+
 $$\begin{equation}
 \frac{a}{b} = \frac{(a_r / c) (b_r / c) + (a_i / c) (b_i / c)}{(b_r / c)^2 + (b_i / c)^2} + i \frac{(a_i / c) (b_r / c) - (a_r / c) (b_i / c)}{(b_r / c)^2 + (b_i / c)^2},
 \end{equation}$$
+
 where \\(c=\mathrm{max}(|b_r|, |b_i|)\\).
-By dividing all terms by \\(c\\), it drags away the denominator from the too-small or too-large regions into close to 1, avoiding the
+By dividing all terms by \\(c\\), it drags away the denominator from the too-small or too-large regions to be close to 1, avoiding the
 underflow and overflow problems.
 Moreover, this solution does not need conditional, so it can be executed efficiently with SIMD.
 
@@ -119,18 +129,18 @@ However, this is what makes my hair falls out.
 
 Handled improperly, edge cases can gives the wrong results.
 For example, division by \\(b=\infty + i \infty\\) should produce 0 if the nominator is finite.
-However, following the equation above, we can get `nan` as the results because of the \\((b_r / c)\\) calculation.
+However, following the equation above, we can get `nan` as the result because of the \\((b_r / c)\\) calculation.
 
 To handle the edge cases properly, we usually need to run various combinations of `inf`, `-inf`, `nan`, `0`, or even `-0`, and we need to
 know what to expect as the results.
 Most of the time, the expected results for these edge cases are quite obvious, such as any operations involving `nan` should produce
 `nan`s.
-Some cases however, the behaviour of the edge cases does not align with other behaviour. See [this](https://stackoverflow.com/questions/74798626/) for example.
-In this division case, fortunately the edge cases can be handled by making a separate calculation when \\(c\\) is infinite which should produce zero.
+Some cases however, the behaviour of the edge cases does not align with other behaviours. See [this](https://stackoverflow.com/questions/74798626/) for example.
+In this division case, fortunately the edge cases can be handled by making a separate calculation when \\(c\\) is infinite which should return zero.
 
 In the end, implementing the numerically-stable division slows down the operation by 10% up to 160% compared to the naive (but unstable) implementation.
 
 **What I learned**
 
-So far I have been using these simple operations in libraries such as numpy and pytorch without really appreciating a lot of smart works done behind it.
+So far I have been using many simple operations in numpy and pytorch without really appreciating a lot of smart works done behind it.
 A seemingly simple division operation can actually be so complex and challenging to fulfill various constraints.
