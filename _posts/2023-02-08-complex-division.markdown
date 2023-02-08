@@ -2,7 +2,7 @@
 layout: post
 title: "How complex can a division be?"
 comments: true
-date: 2023-07-02 19:01 +0000
+date: 2023-02-07 11:19 +0000
 published: true
 categories:
 - Numerical operations
