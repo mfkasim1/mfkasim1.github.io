@@ -1,5 +1,7 @@
 # mfkasim1.github.io
 
+Repository for mfkasim1's personal blog on: https://mfkasim1.github.io/
+
 ## Setting up
 
     sudo apt-get install ruby-full
